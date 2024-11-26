@@ -2,7 +2,7 @@
  * This class is used to connect the Neurons together
  */
 
-class Connection {
+public class Connection {
 
     private Neuron fromNeuron;
     private Neuron toNeuron;
