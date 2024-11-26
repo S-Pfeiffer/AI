@@ -4,6 +4,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class GLHandler {
+
     private long window;
 
     public void init() {
