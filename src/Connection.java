@@ -1,5 +1,5 @@
 /**
- * This class is used to connect the Neurons together
+ * Diese Klasse dient dazu, Neuronen miteinander zu verbinden.
  */
 
 public class Connection {
@@ -9,14 +9,14 @@ public class Connection {
     private double weight;
 
     /**
-     * The constructor for this class uses following values
+     * Konstruktor
      *
-     * @param fromNeuron The neuron to take the value from.
-     * @param toNeuron   The neuron to write the value of the connection to
-     *                   by multiplies the input value with the weight of the connection.
+     * @param fromNeuron Das Neuron aus dem ein Wert geholt wird.
+     * @param toNeuron   Das Neuron an den ein Wrt übergeben wird.
+     *                   Dabei wird der Übergabewert mit dem Gewicht der Verbindung multipliziert.
      *                   <p>
-     *                   Every time a new connection is generated its weight will set randomly in the
-     *                   range between -1.0 and 1.0
+     *                   Beim Generieren eines Objektes aus dieser Klasse enthält das Gewicht
+     *                   einen zufälligen Wert zwischen -1.0 und 1.0
      */
 
     public Connection(Neuron fromNeuron, Neuron toNeuron) {
@@ -26,7 +26,7 @@ public class Connection {
     }
 
     /**
-     * @return Returns neuron connected to the input side of the connection.
+     * @return Gibt den Wert des Neurons zurück, aus dem gelesen wird.
      */
 
     public Neuron getFromNeuron() {
@@ -34,7 +34,7 @@ public class Connection {
     }
 
     /**
-     * @param fromNeuron Set the neuron to the input side of the connection.
+     * @param fromNeuron Setzt das angegebene Neuron als Eingabeneuron für diese Verbindung.
      */
 
     public void setFromNeuron(Neuron fromNeuron) {
@@ -42,7 +42,7 @@ public class Connection {
     }
 
     /**
-     * @return Returns the neuron at the output side of the connection.
+     * @return Gibt das Neuron zurück, in das geschrieben wird.
      */
 
     public Neuron getToNeuron() {
@@ -50,7 +50,7 @@ public class Connection {
     }
 
     /**
-     * @param toNeuron Set the neuron of the output side of the connection.
+     * @param toNeuron Setzt das angegebene Neuron als Ausgabeneuron für diese Verbindung
      */
 
     public void setToNeuron(Neuron toNeuron) {
@@ -58,7 +58,7 @@ public class Connection {
     }
 
     /**
-     * @return Returns the weight of the connection.
+     * @return Gibt das gewicht dieser Verbindung zurück.
      */
 
     public double getWeight() {
@@ -66,7 +66,7 @@ public class Connection {
     }
 
     /**
-     * @param weight Sets the weight of the connection
+     * @param weight Setzt das gewicht dieser Verbindung
      */
 
     public void setWeight(double weight) {

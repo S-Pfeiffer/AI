@@ -5,11 +5,11 @@
 public class Tool {
 
     /**
-     * Sigmoid function
+     * Sigmoid Funktion
      *
-     * @param value The given Value to compute.
-     * @return The (double) Sigmoid of the given value.
-     * @return Returns 0 if the value < -6 and 1 if the value > 6
+     * @param value Der Wert auf den die Sigmoid Funktion angewendet werden soll.
+     * @return Der Rückgabewert ist 0, wenn der Eingabewert < -6 ist oder 1, wenn
+     * der Eingabewert value > 6 ist.
      */
 
     public static double sigmoid(double value) {
@@ -17,10 +17,11 @@ public class Tool {
     }
 
     /**
-     * Hyberbolic tangent
+     * Hyperbolicus Tangens
      *
-     * @param value The given Value to compute.
-     * @return The (double) Hyberbolic tangent by mapping the given Value to -1 and 1
+     * @param value Der Wert auf den Hyperbolicus Tangens angewendet werden soll.
+     * @return Zurückgegeben wird ein Wert zwischen -1.0 und 1.0 ausgehend eines Mappings
+     * der eingabe zwischen 0 und 1.
      */
 
     public static double hybTan(double value) {
@@ -29,15 +30,15 @@ public class Tool {
     }
 
     /**
-     * The mapTo function "map's" a given Value in between minIn and maxIn
-     * to a result in between minOut and maxOut
+     * Methode zum umlegen eines Eingabewertes im definierten Eingabebereich
+     * zu einem Wert im definierten Ausgabebereich.
      *
-     * @param value  The given value to map.
-     * @param minIn  Represents the lower bound of the input.
-     * @param maxIn  Represents the high bound of the input.
-     * @param minOut Represents the lower bound of the output.
-     * @param maxOut Represents the high bound of the output.
-     * @return The mapped value.
+     * @param value  Eingabewert
+     * @param minIn  Untergrenze des Eingabewertes
+     * @param maxIn  Obergrenze des Eingabewertes
+     * @param minOut Untergrenze des Ausgabewertes
+     * @param maxOut Obergrenze des Ausgabewertes
+     * @return Umgelegter Wert
      */
 
     public static double mapTo(double value, double minIn, double maxIn, double minOut, double maxOut) {
@@ -45,11 +46,11 @@ public class Tool {
     }
 
     /**
-     * rndDouble computes a random double between "from" and "to".
+     * Einfache Methode zum Berechnen einer Zufallszahl.
      *
-     * @param from Lower bound.
-     * @param to   High bound.
-     * @return A random number in between (double) from and (double) to.
+     * @param from Von Wert
+     * @param to   Bis Wert.
+     * @return Rückgabe einer Zufallszahl im gewählten Bereich.
      */
 
     public static double rndDouble(double from, double to) {
