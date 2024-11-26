@@ -21,7 +21,6 @@ public class Tool {
      *
      * @param value The given Value to compute.
      * @return The (double) Hyberbolic tangent by mapping the given Value to -1 and 1
-     * @return Returns -1 if the value is <=0 and 1 if the Value is >= 0
      */
 
     public static double hybTan(double value) {

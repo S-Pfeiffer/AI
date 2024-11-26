@@ -32,7 +32,7 @@ public class Creature {
     }
 
     public Creature() {
-        System.out.println(this.network.getInputs());
+
     }
 
     public Network getNetwork() {
