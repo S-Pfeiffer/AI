@@ -15,19 +15,31 @@ public class Main {
             glfwSetWindowShouldClose(win, true);
         });
 
+        final int targetFPS = 1;
+        final long frameTime = 1000 / targetFPS;
+        long lastTime = System.currentTimeMillis();
+
         while (!glfwWindowShouldClose(window)) {
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - lastTime;
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            for (int i = 100; i < 300; i++) {
-                for (int j = 100; j < 300; j++) {
-                    float x = GLTools.glMapX(i);
-                    float y = GLTools.glMapY(j);
-                    renderer.setPixel(x, y, 1.0f, 1.0f, 1.0f);
-                }
+            if (elapsedTime >= frameTime) {
+                lastTime = currentTime;
+                gameRenderer();
             }
+
             glfwSwapBuffers(window);
             glfwPollEvents();
         }
+
         lwjglHandler.terminate();
     }
+
+    public static void gameRenderer() {
+
+    }
 }
+
+
+
