@@ -1,4 +1,11 @@
 /**
+ * this project is intended to implement a simulation of AI creatures in Java
+ *
+ * @author Stephan Pfeiffer
+ * @version 0.00
+ */
+
+/**
  * The main Class of this project
  */
 

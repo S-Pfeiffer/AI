@@ -12,10 +12,10 @@ public class Network {
 
     public void feedForward() {
         for (Connection f : this.firstLayerConnections) {
-            f.getToNeuron().setValue(f.getFromNeuron().getValue() * f.getWeight());
+            f.getToNeuron().addValue(f.getFromNeuron().getValue() * f.getWeight());
         }
         for (Connection f : this.secondLayerConnections) {
-            f.getToNeuron().setValue(f.getFromNeuron().getValue() * f.getWeight());
+            f.getToNeuron().addValue(f.getFromNeuron().getValue() * f.getWeight());
         }
     }
 

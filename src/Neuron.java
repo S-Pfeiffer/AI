@@ -10,6 +10,10 @@ public class Neuron {
     }
 
     public void setValue(double value) {
+        this.value = value;
+    }
+
+    public void addValue(double value) {
         this.value += value;
     }
 
