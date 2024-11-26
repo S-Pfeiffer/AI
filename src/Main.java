@@ -9,6 +9,7 @@
  * The main Class of this project
  */
 
+
 public class Main {
     public static void main(String[] args) {
 
@@ -22,7 +23,7 @@ public class Main {
          * @return A network type Network
          */
 
-        Network network = new Network(2, 3, 2);
+        Network network = new Network(Globals.INPUT_NEURONS, Globals.HIDDEN_NEURONS, Globals.OUTPUT_NEURONS);
 
         for (Neuron n : network.getInputs()) {
             n.setValue(Tool.rndDouble(-1.0, 1.0));

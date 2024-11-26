@@ -11,6 +11,14 @@ public class Network {
     private List<Connection> secondLayerConnections = new ArrayList<>();
 
     public void feedForward() {
+
+        for (Neuron n : hiddens) {
+            n.setValue(0.0);
+        }
+        for (Neuron n : outputs) {
+            n.setValue(0.0);
+        }
+
         for (Connection f : this.firstLayerConnections) {
             f.getToNeuron().addValue(f.getFromNeuron().getValue() * f.getWeight());
         }
