@@ -15,8 +15,6 @@ public class Main {
             glfwSetWindowShouldClose(win, true);
         });
 
-        final int targetFPS = 1;
-        final long frameTime = 1000 / targetFPS;
         long lastTime = System.currentTimeMillis();
 
         while (!glfwWindowShouldClose(window)) {
@@ -24,7 +22,7 @@ public class Main {
             long elapsedTime = currentTime - lastTime;
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            if (elapsedTime >= frameTime) {
+            if (elapsedTime >= GLGlobals.FRAME_TIME) {
                 lastTime = currentTime;
                 gameRenderer();
             }
