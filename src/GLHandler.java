@@ -24,6 +24,8 @@ public class GLHandler {
             throw new RuntimeException("Fenster konnte nicht erstellt werden");
         }
 
+        glfwMaximizeWindow(window);
+
         glfwMakeContextCurrent(window);
         glfwSwapInterval(1);
         glfwShowWindow(window);
