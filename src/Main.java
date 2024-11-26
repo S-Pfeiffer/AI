@@ -12,18 +12,22 @@ public class Main {
         long window = lwjglHandler.getWindow();
 
         glfwSetWindowCloseCallback(window, (win) -> {
-            glfwSetWindowShouldClose(win, true); // Markiere Fenster als zu schließen
+            glfwSetWindowShouldClose(win, true);
         });
 
         while (!glfwWindowShouldClose(window)) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            renderer.setPixel(0.5f, 0.5f, 1.0f, 1.0f, 1.0f);
-
+            for (int i = 100; i < 200; i++) {
+                for (int j = 200; j < 300; j++) {
+                    float x = GLTools.glMapX(i);
+                    float y = GLTools.glMapY(j);
+                    renderer.setPixel(x, y, 1.0f, 1.0f, 1.0f);
+                }
+            }
             glfwSwapBuffers(window);
             glfwPollEvents();
         }
-
         lwjglHandler.terminate();
     }
 }

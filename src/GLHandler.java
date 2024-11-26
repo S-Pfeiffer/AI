@@ -1,9 +1,7 @@
-import org.lwjgl.*;
-import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class GLHandler {
     private long window;
@@ -18,7 +16,7 @@ public class GLHandler {
 
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        window = glfwCreateWindow(800, 600, "LWJGL Test", NULL, NULL);
+        window = glfwCreateWindow(GLGlobals.SCREEN_WIDTH, GLGlobals.SCREEN_HEIGHT, "KI", NULL, NULL);
 
         if (window == NULL) {
             throw new RuntimeException("Fenster konnte nicht erstellt werden");
