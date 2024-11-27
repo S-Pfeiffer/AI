@@ -91,7 +91,6 @@ public static void uiRenderer(GLRenderer renderer, long window) {
         cx += Tool.rndDouble(-0.8, 0.8);
         cy += Tool.rndDouble(-0.8, 0.8);
         health = 100;
-        System.out.println("Respawn");
     }
     if (health >= 100) {
         health = 100;
