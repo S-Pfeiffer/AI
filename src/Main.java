@@ -4,6 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Main {
     static Map worldMap = new Map();
+
     public static void main(String[] args) {
 
         GLHandler lwjglHandler = new GLHandler();
@@ -11,7 +12,6 @@ public class Main {
         lwjglHandler.createOpenGLCapabilities();
 
         GLRenderer renderer = new GLRenderer();
-
         long window = lwjglHandler.getWindow();
 
         glfwSetWindowCloseCallback(window, (win) -> {
@@ -25,9 +25,11 @@ public class Main {
             long elapsedTime = currentTime - lastTime;
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+            renderer.fillRectangle(-1,-1,1,1,0,1,0);
+
             if (elapsedTime >= GLGlobals.FRAME_TIME) {
                 lastTime = currentTime;
-                gameRenderer();
+                gameRenderer(renderer);
             }
 
             glfwSwapBuffers(window);
@@ -37,9 +39,8 @@ public class Main {
         lwjglHandler.terminate();
     }
 
-    public static void gameRenderer() {
-        worldMap.setTile(0,0, new Tile(0,100));
-        System.out.println(worldMap.getTile(0,0));
+    public static void gameRenderer(GLRenderer renderer) {
+        renderer.fillRectangle(-.5f,-.5f,.5f,.5f,1,0,0);
     }
 }
 
