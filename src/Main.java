@@ -3,8 +3,10 @@ import static org.lwjgl.opengl.GL11.*;
 
 
 static Map worldMap = new Map();
+
 static double cx = 0;
 static double cy = 0;
+static int health = 100;
 
 public static void main(String[] args) {
 
@@ -41,15 +43,60 @@ public static void uiRenderer(GLRenderer renderer, long window) {
             if (worldMap.getTile(x, y) == 0) {
                 renderer.fillRectangle(xx, yy, xx + Globals.TILE_SIZE, yy + Globals.TILE_SIZE, 0, 0, 1);
             } else {
-                renderer.fillRectangle(xx, yy, xx + Globals.TILE_SIZE, yy + Globals.TILE_SIZE, 0, 1, 0);
+                if (worldMap.getFood(x, y) < 99) {
+                    worldMap.setFood(x, y, worldMap.getFood(x, y) + 0.1d);
+                }
+                if (worldMap.getFood(x, y) < 1) {
+                    worldMap.setFood(x, y, 1);
+                }
+
+                renderer.fillRectangle(xx, yy, xx + Globals.TILE_SIZE, yy + Globals.TILE_SIZE, 0, worldMap.getFood(x, y) / 100, 0);
             }
         }
     }
     //Kreatur zeichnen
-    renderer.fillCircle(cx, cy, 0.02f, 100, 1, 1, 1);
-    renderer.drawCircle(cx, cy, 0.02f, 100, 0, 0, 0);
     cx += Tool.rndDouble(-0.01f, 0.01f);
     cy += Tool.rndDouble(-0.01f, 0.01f);
+
+    if (cx < -0.8) {
+        cx = -0.8;
+    }
+    if (cx > 0.8) {
+        cx = 0.8;
+    }
+    if (cy < -0.8) {
+        cy = -0.8;
+    }
+    if (cy > 0.8) {
+        cy = 0.8;
+    }
+
+
+    int tileX = (int) Tool.mapTo(cx, -1, 1, 0, Globals.MAP_SIZE);
+    int tileY = (int) Tool.mapTo(cy, -1, 1, 0, Globals.MAP_SIZE);
+    int tileT = worldMap.getTile(tileX, tileY);
+
+    if (tileT == 0) {
+        health--;
+        renderer.fillCircle(cx, cy, 0.02f, 4, 1, 1, 1);
+    } else {
+        if (worldMap.getFood(tileX, tileY) > 1) {
+            health++;
+        }
+        renderer.fillCircle(cx, cy, 0.02f, 20, 1, 1, 1);
+        worldMap.setFood(tileX, tileY, worldMap.getFood(tileX, tileY) - 1);
+    }
+
+    if (health <= 0) {
+        cx += Tool.rndDouble(-0.8, 0.8);
+        cy += Tool.rndDouble(-0.8, 0.8);
+        health = 100;
+        System.out.println("Respawn");
+    }
+    if (health >= 100) {
+        health = 100;
+    }
+
     glfwSwapBuffers(window);
 }
 

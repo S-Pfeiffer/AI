@@ -2,27 +2,19 @@ public class Map {
 
     private static int size;
     private static int[][] tileMap;
-    private static float[][] foodMap;
+    private static double[][] foodMap;
 
     public Map() {
         size = Globals.MAP_SIZE;
         initMap(size);
     }
 
-    public static int[][] getTileMap() {
-        return tileMap;
-    }
-
-    public static void setTileMap(int[][] tileMap) {
-        Map.tileMap = tileMap;
-    }
-
     private void initMap(int size) {
         tileMap = new int[size][size];
-        foodMap = new float[size][size];
+        foodMap = new double[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (Tool.rndDouble(0f, 100f) < (float) Globals.MAP_LAND_RATIO) {
+                if (Tool.rndDouble(0f, 100f) > (float) Globals.MAP_LAND_RATIO) {
                     tileMap[i][j] = 0;
                     foodMap[i][j] = 0;
                 } else {
@@ -31,6 +23,22 @@ public class Map {
                 }
             }
         }
+    }
+
+    public double getFood(int x, int y) {
+        return foodMap[x][y];
+    }
+
+    public void setFood(int x, int y, double food) {
+        foodMap[x][y] = (float) food;
+    }
+
+    public static int[][] getTileMap() {
+        return tileMap;
+    }
+
+    public static void setTileMap(int[][] tileMap) {
+        Map.tileMap = tileMap;
     }
 
     public void setTile(int x, int y, int type) {
