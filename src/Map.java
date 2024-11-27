@@ -1,9 +1,9 @@
 public class Map {
 
-    private static int size;
+    private int size;
 
     public Map() {
-        size = Globals.MAP_SIZE;
+        this.size = Globals.MAP_SIZE;
         initMap(size);
     }
 
