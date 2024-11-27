@@ -26,7 +26,7 @@ public class Tool {
 
     public static double hybTan(double value) {
         value = sigmoid(value);
-        return mapTo(value, 0, 1, -1, 1);
+        return mapTo((float)value, 0, 1, -1, 1);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Tool {
      * @return Umgelegter Wert
      */
 
-    public static double mapTo(double value, double minIn, double maxIn, double minOut, double maxOut) {
+    public static double mapTo(float value, float minIn, float maxIn, float minOut, float maxOut) {
         return (value - minIn) * (maxOut - minOut) / (maxIn - minIn) + minOut;
     }
 

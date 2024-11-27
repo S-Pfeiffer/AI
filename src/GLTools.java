@@ -1,10 +1,10 @@
 public class GLTools {
-    public static float glMapX(int x) {
-        return (2.0f * x / GLGlobals.SCREEN_WIDTH) - 1.0f;
+    public static double glMapX(double x) {
+        return Tool.mapTo((float) x,0.0f,100f,-1.0f,1.0f);
     }
 
-    public static float glMapY(int y) {
-        return 1.0f - (2.0f * y / GLGlobals.SCREEN_HEIGHT);
+    public static float glMapY(float y) {
+        return (float) Tool.mapTo(y,0.0f,100f,-1.0f,1.0f);
     }
 }
 

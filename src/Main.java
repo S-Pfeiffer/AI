@@ -25,8 +25,6 @@ public class Main {
             long elapsedTime = currentTime - lastTime;
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            renderer.fillRectangle(-1,-1,1,1,0,1,0);
-
             if (elapsedTime >= GLGlobals.FRAME_TIME) {
                 lastTime = currentTime;
                 gameRenderer(renderer);
@@ -40,7 +38,17 @@ public class Main {
     }
 
     public static void gameRenderer(GLRenderer renderer) {
-        renderer.fillRectangle(-.5f,-.5f,.5f,.5f,1,0,0);
+        for (int x = 0; x < Globals.MAP_SIZE; x++) {
+            for (int y = 0; y < Globals.MAP_SIZE; y++) {
+                double xx = GLTools.glMapX(x * Globals.TILE_SIZE);
+                double yy = GLTools.glMapY(y * Globals.TILE_SIZE);
+                if (worldMap.getTile(x, y) == 0) {
+                    renderer.fillRectangle((float)xx, (float)yy, (float)xx + Globals.TILE_SIZE, (float)yy + Globals.TILE_SIZE, 0, 0, 1);
+                } else {
+                    renderer.fillRectangle((float)xx, (float)yy, (float)xx + Globals.TILE_SIZE, (float)yy + Globals.TILE_SIZE, 0, 1, 0);
+                }
+            }
+        }
     }
 }
 
