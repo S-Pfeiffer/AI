@@ -23,6 +23,10 @@ public class Creature {
     private double feelerAngle;
     private double eat;
 
+    public Creature() {
+
+    }
+
     public void updateInputs() {
         List<Neuron> inputNeurons = this.network.getInputs();
         inputNeurons.get(0).setValue(this.bias);
@@ -32,10 +36,6 @@ public class Creature {
         inputNeurons.get(4).setValue(this.tileTypeFeeler);
         inputNeurons.get(5).setValue(this.tileTypePosition);
         inputNeurons.get(6).setValue(this.age);
-    }
-
-    public Creature() {
-
     }
 
     public double getxPos() {

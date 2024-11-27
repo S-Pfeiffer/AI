@@ -4,6 +4,19 @@ public class Map {
     private static int[][] tileMap;
     private static float[][] foodMap;
 
+    public Map() {
+        size = Globals.MAP_SIZE;
+        initMap(size);
+    }
+
+    public static int[][] getTileMap() {
+        return tileMap;
+    }
+
+    public static void setTileMap(int[][] tileMap) {
+        Map.tileMap = tileMap;
+    }
+
     private void initMap(int size) {
         tileMap = new int[size][size];
         foodMap = new float[size][size];
@@ -18,11 +31,6 @@ public class Map {
                 }
             }
         }
-    }
-
-    public Map() {
-        size = Globals.MAP_SIZE;
-        initMap(size);
     }
 
     public void setTile(int x, int y, int type) {
@@ -43,13 +51,5 @@ public class Map {
 
     public void setTileMap(int x, int y, int tile) {
         tileMap[x][y] = tile;
-    }
-
-    public static int[][] getTileMap() {
-        return tileMap;
-    }
-
-    public static void setTileMap(int[][] tileMap) {
-        Map.tileMap = tileMap;
     }
 }

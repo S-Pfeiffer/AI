@@ -1,3 +1,4 @@
+import java.nio.ByteBuffer;
 import static org.lwjgl.opengl.GL11.*;
 
 public class GLRenderer {
@@ -108,5 +109,17 @@ public class GLRenderer {
             glVertex2d(x, y);
         }
         glEnd();
+    }
+
+    public double[] getPixelColor(int x, int y) {
+        ByteBuffer buffer = ByteBuffer.allocateDirect(3); // 3 Bytes für RGB
+        glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, buffer);
+
+        // Farbwerte extrahieren und normalisieren (0-255 zu 0.0-1.0)
+        double red = (buffer.get(0) & 0xFF) / 255.0;
+        double green = (buffer.get(1) & 0xFF) / 255.0;
+        double blue = (buffer.get(2) & 0xFF) / 255.0;
+
+        return new double[]{red, green, blue};
     }
 }
