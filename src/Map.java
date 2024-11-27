@@ -18,7 +18,7 @@ public class Map {
         return map[x][y].getType();
     }
 
-    public double getFoodValue(int x, int y) {
+    public double getTileFood(int x, int y) {
         return map[x][y].getFoodValue();
     }
 

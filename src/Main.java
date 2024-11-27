@@ -1,7 +1,7 @@
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
-static Map worldMap = new Map();
+Map worldMap = new Map();
 
 public void main(String[] args) {
 
@@ -17,6 +17,9 @@ public void main(String[] args) {
         glfwSetWindowShouldClose(win, true);
     });
     long lastTime = System.currentTimeMillis();
+
+    uiRenderer(window);
+
     while (!glfwWindowShouldClose(window)) {
         long currentTime = System.currentTimeMillis();
         long elapsedTime = currentTime - lastTime;
@@ -25,7 +28,6 @@ public void main(String[] args) {
             lastTime = currentTime;
             uiRenderer(window);
         }
-
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -35,7 +37,7 @@ public void main(String[] args) {
 public void uiRenderer(long window) {
     for (int y = 0; y < Globals.MAP_SIZE; y++) {
         for (int x = 0; x < Globals.MAP_SIZE; x++) {
-            System.out.print(worldMap.getTileType(x, y));
+            System.out.print(worldMap.getTileFood(x, y));
         }
         System.out.println();
     }
