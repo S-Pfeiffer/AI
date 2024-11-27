@@ -1,12 +1,7 @@
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
-
 static Map worldMap = new Map();
-
-static double cx = 0;
-static double cy = 0;
-static int health = 100;
 
 public static void main(String[] args) {
 

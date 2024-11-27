@@ -1,13 +1,17 @@
 public class Map {
 
-    private int size;
+    private Tile[][] map = new Tile[Globals.MAP_SIZE][Globals.MAP_SIZE];
 
     public Map() {
-        this.size = Globals.MAP_SIZE;
-        initMap(size);
+        initMap(Globals.MAP_SIZE);
     }
 
     private void initMap(int size) {
-
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                this.map[x][y] = new Tile(Globals.TILE_TYPE_WATER);
+            }
+        }
     }
+
 }

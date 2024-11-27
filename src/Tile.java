@@ -2,9 +2,8 @@ public class Tile {
     private int type;
     private double foodValue;
 
-    public Tile(int type, double foodValue) {
+    public Tile(int type) {
         this.type = type;
-        this.foodValue = foodValue;
     }
 
     public int getType() {
