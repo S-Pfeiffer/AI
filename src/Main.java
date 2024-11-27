@@ -1,8 +1,11 @@
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
+
 public class Main {
+    static Map worldMap = new Map();
     public static void main(String[] args) {
+
         GLHandler lwjglHandler = new GLHandler();
         lwjglHandler.init();
         lwjglHandler.createOpenGLCapabilities();
@@ -35,7 +38,8 @@ public class Main {
     }
 
     public static void gameRenderer() {
-
+        worldMap.setTile(0,0, new Tile(0,100));
+        System.out.println(worldMap.getTile(0,0));
     }
 }
 

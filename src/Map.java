@@ -17,19 +17,27 @@ public class Map {
         initMap(this.size);
     }
 
-    public static int getSize() {
+    public void setTile(int x, int y, Tile tile) {
+        tileMap[x][y] = tile;
+    }
+
+    public Tile getTile(int x, int y) {
+        return tileMap[x][y];
+    }
+
+    public int getSize() {
         return size;
     }
 
-    public static void setSize(int size) {
+    public void setSize(int size) {
         Map.size = size;
     }
 
-    public static Tile[][] getTileMap() {
+    public Tile[][] getTileMap() {
         return tileMap;
     }
 
-    public static void setTileMap(Tile[][] tileMap) {
+    public void setTileMap(Tile[][] tileMap) {
         Map.tileMap = tileMap;
     }
 }
