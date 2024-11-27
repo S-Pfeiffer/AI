@@ -21,4 +21,9 @@ public class Map {
     public double getFoodValue(int x, int y) {
         return map[x][y].getFoodValue();
     }
+
+    public void setTileType(int x, int y, int type) {
+        map[x][y].setType(type);
+    }
+
 }

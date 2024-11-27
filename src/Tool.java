@@ -19,7 +19,7 @@ public class Tool {
     /**
      * Hyperbolicus Tangens
      *
-     * @param value Der Wert auf den Hyperbolicus Tangens angewendet werden soll.
+     * @param value Der Wert auf den Hyperbolic Tangens angewendet werden soll.
      * @return Zurückgegeben wird ein Wert zwischen -1.0 und 1.0 ausgehend eines Mappings
      * der eingabe zwischen 0 und 1.
      */

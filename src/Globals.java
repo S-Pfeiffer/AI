@@ -10,5 +10,5 @@ public class Globals {
     public static final int MAX_FOOD_ON_TILE = 100;
 
     public static final int MAP_SIZE = 20;
-    public static final int MAP_LAND_RATIO = 60;
+    public static final int MAP_LAND_RATIO = 50;
 }

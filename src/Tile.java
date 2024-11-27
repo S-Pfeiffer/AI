@@ -4,6 +4,11 @@ public class Tile {
 
     public Tile(int type) {
         this.type = type;
+        if (type == Globals.TILE_TYPE_GROUND) {
+            this.foodValue = 100.0d;
+        } else {
+            this.foodValue = -1.0d;
+        }
     }
 
     public int getType() {
@@ -19,6 +24,10 @@ public class Tile {
     }
 
     public void setFoodValue(double foodValue) {
-        this.foodValue = foodValue;
+        if (type == Globals.TILE_TYPE_GROUND) {
+            this.foodValue = foodValue;
+        } else {
+            this.foodValue = -1.0d;
+        }
     }
 }

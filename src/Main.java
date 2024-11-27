@@ -23,16 +23,23 @@ public void main(String[] args) {
 
         if (elapsedTime >= GLGlobals.FRAME_TIME) {
             lastTime = currentTime;
-            uiRenderer();
+            uiRenderer(window);
         }
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     lwjglHandler.terminate();
 }
 
-public void uiRenderer() {
-    System.out.println(worldMap.getFoodValue(0,0));
+public void uiRenderer(long window) {
+    for (int y = 0; y < Globals.MAP_SIZE; y++) {
+        for (int x = 0; x < Globals.MAP_SIZE; x++) {
+            System.out.print(worldMap.getTileType(x, y));
+        }
+        System.out.println();
+    }
+    System.out.println();
 }
 
 
