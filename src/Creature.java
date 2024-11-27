@@ -2,6 +2,9 @@ import java.util.List;
 
 public class Creature {
 
+    private double xPos;
+    private double yPos;
+
     private Network network = new Network(Globals.INPUT_NEURONS, Globals.HIDDEN_NEURONS, Globals.OUTPUT_NEURONS);
 
     // Inputs
@@ -33,6 +36,22 @@ public class Creature {
 
     public Creature() {
 
+    }
+
+    public double getxPos() {
+        return xPos;
+    }
+
+    public void setxPos(double xPos) {
+        this.xPos = xPos;
+    }
+
+    public double getyPos() {
+        return yPos;
+    }
+
+    public void setyPos(double yPos) {
+        this.yPos = yPos;
     }
 
     public Network getNetwork() {
