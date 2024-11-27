@@ -3,7 +3,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 static Map worldMap = new Map();
 
-public static void main(String[] args) {
+public void main(String[] args) {
 
     GLHandler lwjglHandler = new GLHandler();
     lwjglHandler.init();
@@ -23,16 +23,16 @@ public static void main(String[] args) {
 
         if (elapsedTime >= GLGlobals.FRAME_TIME) {
             lastTime = currentTime;
-            uiRenderer(renderer, window);
+            uiRenderer();
         }
+        glfwSwapBuffers(window);
         glfwPollEvents();
     }
     lwjglHandler.terminate();
 }
 
-public static void uiRenderer(GLRenderer renderer, long window) {
-
-    glfwSwapBuffers(window);
+public void uiRenderer() {
+    System.out.println(worldMap.getFoodValue(0,0));
 }
 
 

@@ -14,4 +14,11 @@ public class Map {
         }
     }
 
+    public int getTileType(int x, int y) {
+        return map[x][y].getType();
+    }
+
+    public double getFoodValue(int x, int y) {
+        return map[x][y].getFoodValue();
+    }
 }
