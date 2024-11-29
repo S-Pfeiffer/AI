@@ -1,16 +1,26 @@
 public class CreatureRenderer {
 
+    int gridX;
+    int gridY;
+    double positionX;
+    double positionY;
+
     public void draw(GLRenderer renderer, Map worldMap, Creature creature) {
 
-        double positionX = creature.getxPos();
-        double positionY = creature.getyPos();
+        this.positionX = creature.getxPos();
+        this.positionY = creature.getyPos();
+        gridX = (int) (this.positionX / Globals.TILE_SIZE);
+        gridY = (int) (this.positionY / Globals.TILE_SIZE);
+        int tileType = worldMap.getTileType(this.gridX, this.gridY);
 
-        int gridX = (int) (positionX / Globals.TILE_SIZE);
-        int gridY = (int) (positionY / Globals.TILE_SIZE);
+        if (tileType == Globals.TILE_TYPE_GROUND) {
+            worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1);
+        }
 
         double offsetX = ((double) GLGlobals.SCREEN_WIDTH / 2) - ((double) (Globals.TILE_SIZE * Globals.MAP_SIZE) / 2);
+        worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 0.5d);
 
-        renderer.fillCircle(positionX + offsetX, positionY, 10, 10, 1, 1, 1);
+        renderer.fillCircle(this.positionX + offsetX, this.positionY, 10, 10, 1, 1, 1);
 
     }
 }

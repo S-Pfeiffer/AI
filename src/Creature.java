@@ -39,7 +39,7 @@ public class Creature {
     }
 
     public double getxPos() {
-        return xPos;
+        return this.xPos;
     }
 
     public void setxPos(double xPos) {
@@ -47,7 +47,7 @@ public class Creature {
     }
 
     public double getyPos() {
-        return yPos;
+        return this.yPos;
     }
 
     public void setyPos(double yPos) {

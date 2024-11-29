@@ -7,7 +7,7 @@ public class Tile {
         if (type == Globals.TILE_TYPE_GROUND) {
             this.foodValue = (double) Globals.MAX_FOOD_ON_TILE;
         } else {
-            this.foodValue = null;
+            this.foodValue = -1.0d;
         }
     }
 
@@ -25,9 +25,11 @@ public class Tile {
 
     public void setFoodValue(double foodValue) {
         if (type == Globals.TILE_TYPE_GROUND) {
-            this.foodValue = foodValue;
+            if (foodValue > 1 && foodValue < Globals.MAX_FOOD_ON_TILE) {
+                this.foodValue = foodValue;
+            }
         } else {
-            this.foodValue = -1.0d;
+            this.foodValue = -100.0d;
         }
     }
 }

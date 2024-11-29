@@ -26,6 +26,10 @@ public class Map {
         return map[x][y].getFoodValue();
     }
 
+    public void setTileFood(int x, int y, double food) {
+        map[x][y].setFoodValue(food);
+    }
+
     public void setTileType(int x, int y, int type) {
         map[x][y].setType(type);
     }
@@ -43,7 +47,10 @@ public class Map {
                 if (this.getTileType(x, y) == Globals.TILE_TYPE_WATER) {
                     renderer.fillRectangle(x1, y1, x2, y2, 0, 0, 1);
                 } else {
-                    renderer.fillRectangle(x1, y1, x2, y2, 0, 1, 0);
+                    map[x][y].setFoodValue(map[x][y].getFoodValue() + 0.2d);
+                    double g = Tool.mapTo(map[x][y].getFoodValue(), 100, 0, 1, .5);
+                    double rb = Tool.mapTo(map[x][y].getFoodValue(), 100, 0, .2, .5);
+                    renderer.fillRectangle(x1, y1, x2, y2, rb, g, rb / 2);
                 }
             }
         }
