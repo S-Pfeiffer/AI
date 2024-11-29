@@ -25,6 +25,8 @@ public void main(String[] args) {
 
     cr.setxPos(500);
     cr.setyPos(500);
+    cr2.setxPos(500);
+    cr2.setyPos(500);
 
     uiRenderer(window, renderer);
 
@@ -45,8 +47,8 @@ public void uiRenderer(long window, GLRenderer renderer) {
 
     cr.setxPos(cr.getxPos() + Tool.rndDouble(-4, 4));
     cr.setyPos(cr.getyPos() + Tool.rndDouble(-4, 4));
-    cr2.setxPos(cr.getxPos() + Tool.rndDouble(-4, 4));
-    cr2.setyPos(cr.getyPos() + Tool.rndDouble(-4, 4));
+    cr2.setxPos(cr2.getxPos() + Tool.rndDouble(-4, 4));
+    cr2.setyPos(cr2.getyPos() + Tool.rndDouble(-4, 4));
 
     worldMap.draw(renderer);
     creatureRenderer.draw(renderer, worldMap, cr);
