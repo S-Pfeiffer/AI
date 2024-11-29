@@ -2,6 +2,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
 Map worldMap = new Map();
+CreatureRenderer creatureRenderer = new CreatureRenderer();
 List<Creature> creatures = new ArrayList<>();
 
 public void main(String[] args) {
@@ -38,7 +39,7 @@ public void main(String[] args) {
 public void uiRenderer(long window, GLRenderer renderer) {
 
     worldMap.draw(renderer);
-    CreatureRenderer.render(renderer, creatures);
+    creatureRenderer.draw(renderer, worldMap,1000, 1000);
 
     glfwSwapBuffers(window);
 }
