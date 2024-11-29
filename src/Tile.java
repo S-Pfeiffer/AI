@@ -1,13 +1,13 @@
 public class Tile {
     private int type;
-    private double foodValue;
+    private Double foodValue;
 
     public Tile(int type) {
         this.type = type;
         if (type == Globals.TILE_TYPE_GROUND) {
-            this.foodValue = 100.0d;
+            this.foodValue = (double) Globals.MAX_FOOD_ON_TILE;
         } else {
-            this.foodValue = -1.0d;
+            this.foodValue = null;
         }
     }
 
@@ -19,7 +19,7 @@ public class Tile {
         this.type = type;
     }
 
-    public double getFoodValue() {
+    public Double getFoodValue() {
         return foodValue;
     }
 

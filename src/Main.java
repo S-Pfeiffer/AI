@@ -8,6 +8,8 @@ public void main(String[] args) {
     GLHandler lwjglHandler = new GLHandler();
     lwjglHandler.init();
     lwjglHandler.createOpenGLCapabilities();
+    glOrtho(0, GLGlobals.SCREEN_WIDTH, 0, GLGlobals.SCREEN_HEIGHT, -1, 1);
+
 
     GLRenderer renderer = new GLRenderer();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -18,7 +20,7 @@ public void main(String[] args) {
     });
     long lastTime = System.currentTimeMillis();
 
-    uiRenderer(window);
+    uiRenderer(window, renderer);
 
     while (!glfwWindowShouldClose(window)) {
         long currentTime = System.currentTimeMillis();
@@ -26,22 +28,33 @@ public void main(String[] args) {
 
         if (elapsedTime >= GLGlobals.FRAME_TIME) {
             lastTime = currentTime;
-            uiRenderer(window);
+            uiRenderer(window, renderer);
         }
-        glfwSwapBuffers(window);
         glfwPollEvents();
     }
     lwjglHandler.terminate();
 }
 
-public void uiRenderer(long window) {
+public void uiRenderer(long window, GLRenderer renderer) {
     for (int y = 0; y < Globals.MAP_SIZE; y++) {
         for (int x = 0; x < Globals.MAP_SIZE; x++) {
-            System.out.print(worldMap.getTileType(x, y));
+            double x1 = x * Globals.TILE_SIZE;
+            double x2 = x * Globals.TILE_SIZE + Globals.TILE_SIZE;
+            double y1 = y * Globals.TILE_SIZE;
+            double y2 = y * Globals.TILE_SIZE + Globals.TILE_SIZE;
+            x1 += (GLGlobals.SCREEN_WIDTH / 2) - (Globals.TILE_SIZE * Globals.MAP_SIZE / 2);
+            x2 += (GLGlobals.SCREEN_WIDTH / 2) - (Globals.TILE_SIZE * Globals.MAP_SIZE / 2);
+
+
+            if (worldMap.getTileType(x, y) == Globals.TILE_TYPE_WATER) {
+                renderer.fillRectangle(x1, y1, x2, y2, 0, 0, 1);
+            } else {
+                renderer.fillRectangle(x1, y1, x2, y2, 0, 1, 0);
+            }
+
         }
-        System.out.println();
     }
-    System.out.println();
+    glfwSwapBuffers(window);
 }
 
 
