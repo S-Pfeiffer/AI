@@ -10,7 +10,6 @@ public void main(String[] args) {
     lwjglHandler.createOpenGLCapabilities();
     glOrtho(0, GLGlobals.SCREEN_WIDTH, 0, GLGlobals.SCREEN_HEIGHT, -1, 1);
 
-
     GLRenderer renderer = new GLRenderer();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -36,24 +35,7 @@ public void main(String[] args) {
 }
 
 public void uiRenderer(long window, GLRenderer renderer) {
-    for (int y = 0; y < Globals.MAP_SIZE; y++) {
-        for (int x = 0; x < Globals.MAP_SIZE; x++) {
-            double x1 = x * Globals.TILE_SIZE;
-            double x2 = x * Globals.TILE_SIZE + Globals.TILE_SIZE;
-            double y1 = y * Globals.TILE_SIZE;
-            double y2 = y * Globals.TILE_SIZE + Globals.TILE_SIZE;
-            x1 += (GLGlobals.SCREEN_WIDTH / 2) - (Globals.TILE_SIZE * Globals.MAP_SIZE / 2);
-            x2 += (GLGlobals.SCREEN_WIDTH / 2) - (Globals.TILE_SIZE * Globals.MAP_SIZE / 2);
-
-
-            if (worldMap.getTileType(x, y) == Globals.TILE_TYPE_WATER) {
-                renderer.fillRectangle(x1, y1, x2, y2, 0, 0, 1);
-            } else {
-                renderer.fillRectangle(x1, y1, x2, y2, 0, 1, 0);
-            }
-
-        }
-    }
+    worldMap.draw(renderer);
     glfwSwapBuffers(window);
 }
 

@@ -30,4 +30,23 @@ public class Map {
         map[x][y].setType(type);
     }
 
+    public void draw(GLRenderer renderer) {
+        for (int y = 0; y < Globals.MAP_SIZE; y++) {
+            for (int x = 0; x < Globals.MAP_SIZE; x++) {
+                double x1 = x * Globals.TILE_SIZE;
+                double x2 = x * Globals.TILE_SIZE + Globals.TILE_SIZE;
+                double y1 = y * Globals.TILE_SIZE;
+                double y2 = y * Globals.TILE_SIZE + Globals.TILE_SIZE;
+                x1 += (GLGlobals.SCREEN_WIDTH / 2) - (Globals.TILE_SIZE * Globals.MAP_SIZE / 2);
+                x2 += (GLGlobals.SCREEN_WIDTH / 2) - (Globals.TILE_SIZE * Globals.MAP_SIZE / 2);
+
+                if (this.getTileType(x, y) == Globals.TILE_TYPE_WATER) {
+                    renderer.fillRectangle(x1, y1, x2, y2, 0, 0, 1);
+                } else {
+                    renderer.fillRectangle(x1, y1, x2, y2, 0, 1, 0);
+                }
+            }
+        }
+    }
+
 }
