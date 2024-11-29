@@ -4,6 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 Map worldMap = new Map();
 CreatureRenderer creatureRenderer = new CreatureRenderer();
 List<Creature> creatures = new ArrayList<>();
+Creature cr = new Creature();
 
 public void main(String[] args) {
 
@@ -38,8 +39,11 @@ public void main(String[] args) {
 
 public void uiRenderer(long window, GLRenderer renderer) {
 
+    cr.setxPos(500);
+    cr.setyPos(500);
+
     worldMap.draw(renderer);
-    creatureRenderer.draw(renderer, worldMap,1000, 1000);
+    creatureRenderer.draw(renderer, worldMap,cr);
 
     glfwSwapBuffers(window);
 }
