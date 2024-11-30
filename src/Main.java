@@ -56,7 +56,7 @@ public void uiRenderer(long window, GLRenderer renderer) {
         creatureRenderer.draw(renderer, worldMap, creature);
     }
 
-    creatures.removeIf(creature -> creature.getEnergy() < Globals.MINIMUM_ENERGY);
+    creatures.removeIf(creature -> creature.getEnergy() < Globals.CREATURE_MINIMUM_ENERGY);
 
     if (creatures.size() < Globals.MINIMUM_CREATURES) {
         creatures.addLast(new Creature());

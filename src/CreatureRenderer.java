@@ -14,9 +14,9 @@ public class CreatureRenderer {
         int tileType = worldMap.getTileType(this.gridX, this.gridY);
 
         if (tileType == Globals.TILE_TYPE_GROUND) {
-            worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1);
+            worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1.0d);
             if (worldMap.getTileFood(this.gridX, this.gridY) > 2){
-                creature.setEnergy(creature.getEnergy() + 1);
+                creature.setEnergy(creature.getEnergy() + 1.0d);
             }
         }
 
