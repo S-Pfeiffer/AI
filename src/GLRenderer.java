@@ -98,7 +98,7 @@ public class GLRenderer {
 
     public void fillPolygon(double[] vertices, double red, double green, double blue) {
         if (vertices.length % 2 != 0) {
-            throw new IllegalArgumentException("Ungültige Anzahl von Koordinaten");
+            throw new IllegalArgumentException("Ungültige Anzahl von Koordinaten!");
         }
 
         glBegin(GL_POLYGON);

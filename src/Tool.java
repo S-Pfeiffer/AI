@@ -53,8 +53,8 @@ public class Tool {
      * @return Rückgabe einer Zufallszahl im gewählten Bereich.
      */
 
-    public static double rndDouble(double from, double to) {
-        return from + (to - from) * Math.random();
+    public static float rndDouble(double from, double to) {
+        return (float) (from + (to - from) * Math.random());
     }
 
 }

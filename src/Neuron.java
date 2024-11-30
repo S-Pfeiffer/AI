@@ -1,8 +1,6 @@
 public class Neuron {
     private double value;
 
-    private String name;
-
     public Neuron() {
         this.value = Tool.rndDouble(-1.0, 1.0);
     }
@@ -17,13 +15,5 @@ public class Neuron {
 
     public void addValue(double value) {
         this.value += value;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

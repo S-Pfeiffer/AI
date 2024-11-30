@@ -9,7 +9,7 @@ public class GLHandler {
 
     public void init() {
         if (!glfwInit()) {
-            throw new IllegalStateException("GLFW konnte nicht initialisiert werden");
+            throw new IllegalStateException("GLFW konnte nicht initialisiert werden!");
         }
 
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
@@ -17,7 +17,7 @@ public class GLHandler {
         window = glfwCreateWindow(GLGlobals.SCREEN_WIDTH, GLGlobals.SCREEN_HEIGHT, "KI", NULL, NULL);
 
         if (window == NULL) {
-            throw new RuntimeException("Fenster konnte nicht erstellt werden");
+            throw new RuntimeException("Fenster konnte nicht erstellt werden!");
         }
 
         glfwMaximizeWindow(window);

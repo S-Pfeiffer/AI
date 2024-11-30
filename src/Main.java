@@ -50,9 +50,9 @@ public void uiRenderer(long window, GLRenderer renderer) {
     worldMap.draw(renderer);
 
     for (Creature creature : creatures) {
-        creature.setxPos(creature.getxPos() + Tool.rndDouble(-4, 4));
-        creature.setyPos(creature.getyPos() + Tool.rndDouble(-4, 4));
-        creature.setEnergy(creature.getEnergy() - 0.50d);
+        creature.setxPos((float) (creature.getxPos() + Tool.rndDouble(-4, 4)));
+        creature.setyPos((float) (creature.getyPos() + Tool.rndDouble(-4, 4)));
+        creature.setEnergy(creature.getEnergy() - 0.50f);
         creatureRenderer.draw(renderer, worldMap, creature);
     }
 
@@ -60,8 +60,8 @@ public void uiRenderer(long window, GLRenderer renderer) {
 
     if (creatures.size() < Globals.MINIMUM_CREATURES) {
         creatures.addLast(new Creature());
-        creatures.getLast().setxPos(500);
-        creatures.getLast().setyPos(500);
+        creatures.getLast().setxPos(Tool.rndDouble(0, Globals.MAX_SIZE));
+        creatures.getLast().setyPos(Tool.rndDouble(0, Globals.MAX_SIZE));
         creatures.getLast().setEnergy(100);
     }
 

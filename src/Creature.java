@@ -2,8 +2,8 @@ import java.util.List;
 
 public class Creature {
 
-    private double xPos;
-    private double yPos;
+    private float xPos;
+    private float yPos;
 
     private Network network = new Network(Globals.INPUT_NEURONS, Globals.HIDDEN_NEURONS, Globals.OUTPUT_NEURONS);
 
@@ -42,7 +42,7 @@ public class Creature {
         return this.xPos;
     }
 
-    public void setxPos(double xPos) {
+    public void setxPos(float xPos) {
         this.xPos = xPos;
     }
 
@@ -50,7 +50,7 @@ public class Creature {
         return this.yPos;
     }
 
-    public void setyPos(double yPos) {
+    public void setyPos(float yPos) {
         this.yPos = yPos;
     }
 
