@@ -1,6 +1,6 @@
 public class Globals {
 
-    public static final int MINIMUM_CREATURES = 1;
+    public static final int MINIMUM_CREATURES = 10;
 
     public static final int INPUT_NEURONS = 7;
     public static final int HIDDEN_NEURONS = 21;

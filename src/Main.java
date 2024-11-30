@@ -52,7 +52,7 @@ public void uiRenderer(long window, GLRenderer renderer) {
     for (Creature creature : creatures) {
         creature.setxPos(creature.getxPos() + Tool.rndDouble(-4, 4));
         creature.setyPos(creature.getyPos() + Tool.rndDouble(-4, 4));
-        creature.setEnergy(creature.getEnergy() - 1);
+        creature.setEnergy(creature.getEnergy() - 0.50d);
         creatureRenderer.draw(renderer, worldMap, creature);
     }
 
