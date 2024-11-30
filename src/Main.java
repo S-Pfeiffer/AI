@@ -4,8 +4,6 @@ import static org.lwjgl.opengl.GL11.*;
 Map worldMap = new Map();
 CreatureRenderer creatureRenderer = new CreatureRenderer();
 List<Creature> creatures = new ArrayList<>();
-Creature cr = new Creature();
-Creature cr2 = new Creature();
 
 public void main(String[] args) {
 
@@ -23,10 +21,15 @@ public void main(String[] args) {
     });
     long lastTime = System.currentTimeMillis();
 
-    cr.setxPos(500);
-    cr.setyPos(500);
-    cr2.setxPos(500);
-    cr2.setyPos(500);
+    int n =500;
+    for (int i = 0; i < n; i++) {
+        creatures.add(new Creature());
+    }
+
+    for (Creature creature : creatures) {
+        creature.setxPos(500);
+        creature.setyPos(500);
+    }
 
     uiRenderer(window, renderer);
 
@@ -45,14 +48,12 @@ public void main(String[] args) {
 
 public void uiRenderer(long window, GLRenderer renderer) {
 
-    cr.setxPos(cr.getxPos() + Tool.rndDouble(-4, 4));
-    cr.setyPos(cr.getyPos() + Tool.rndDouble(-4, 4));
-    cr2.setxPos(cr2.getxPos() + Tool.rndDouble(-4, 4));
-    cr2.setyPos(cr2.getyPos() + Tool.rndDouble(-4, 4));
-
     worldMap.draw(renderer);
-    creatureRenderer.draw(renderer, worldMap, cr);
-    creatureRenderer.draw(renderer, worldMap, cr2);
+    for (Creature creature : creatures) {
+        creature.setxPos(creature.getxPos() + Tool.rndDouble(-4, 4));
+        creature.setyPos(creature.getyPos() + Tool.rndDouble(-4, 4));
+        creatureRenderer.draw(renderer, worldMap, creature);
+    }
 
     glfwSwapBuffers(window);
 }
