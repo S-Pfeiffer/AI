@@ -21,14 +21,13 @@ public void main(String[] args) {
     });
     long lastTime = System.currentTimeMillis();
 
-    int n =500;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < Globals.MINIMUM_CREATURES; i++) {
         creatures.add(new Creature());
     }
-
     for (Creature creature : creatures) {
         creature.setxPos(500);
         creature.setyPos(500);
+        creature.setEnergy(100);
     }
 
     uiRenderer(window, renderer);
@@ -49,10 +48,21 @@ public void main(String[] args) {
 public void uiRenderer(long window, GLRenderer renderer) {
 
     worldMap.draw(renderer);
+
     for (Creature creature : creatures) {
         creature.setxPos(creature.getxPos() + Tool.rndDouble(-4, 4));
         creature.setyPos(creature.getyPos() + Tool.rndDouble(-4, 4));
+        creature.setEnergy(creature.getEnergy() - 1);
         creatureRenderer.draw(renderer, worldMap, creature);
+    }
+
+    creatures.removeIf(creature -> creature.getEnergy() < Globals.MINIMUM_ENERGY);
+
+    if (creatures.size() < Globals.MINIMUM_CREATURES) {
+        creatures.addLast(new Creature());
+        creatures.getLast().setxPos(500);
+        creatures.getLast().setyPos(500);
+        creatures.getLast().setEnergy(100);
     }
 
     glfwSwapBuffers(window);

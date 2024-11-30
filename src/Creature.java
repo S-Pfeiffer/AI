@@ -99,7 +99,11 @@ public class Creature {
     }
 
     public void setEnergy(double energy) {
-        this.energy = energy;
+        if (this.energy > Globals.MAX_FOOD_ON_TILE * 2) {
+            this.energy = Globals.MAX_FOOD_ON_TILE * 2;
+        } else {
+            this.energy = energy;
+        }
     }
 
     public int getTileTypeFeeler() {

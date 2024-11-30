@@ -15,6 +15,9 @@ public class CreatureRenderer {
 
         if (tileType == Globals.TILE_TYPE_GROUND) {
             worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1);
+            if (worldMap.getTileFood(this.gridX, this.gridY) > 2){
+                creature.setEnergy(creature.getEnergy() + 1);
+            }
         }
 
         double offsetX = ((double) GLGlobals.SCREEN_WIDTH / 2) - ((double) (Globals.TILE_SIZE * Globals.MAP_SIZE) / 2);

@@ -6,7 +6,7 @@ public class GLGlobals {
     public static final int SCREEN_WIDTH;
     public static final int SCREEN_HEIGHT;
 
-    public static final int TARGET_FPS = 1000;
+    public static final int TARGET_FPS = 60;
     public static long FRAME_TIME = 1000 / TARGET_FPS;
 
     static {
