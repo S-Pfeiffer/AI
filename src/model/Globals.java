@@ -4,7 +4,7 @@ import gfx.GLGlobals;
 
 public class Globals {
 
-    public static final int MINIMUM_CREATURES = 10;
+    public static final int MINIMUM_CREATURES = 100;
 
     public static final int INPUT_NEURONS = 7;
     public static final int HIDDEN_NEURONS = 21;
@@ -12,7 +12,7 @@ public class Globals {
     public static final int CREATURE_MINIMUM_ENERGY = 25;
 
     public static final int MAP_SIZE = 20;
-    public static final int MAP_LAND_RATIO = 90;
+    public static final int MAP_LAND_RATIO = 50;
 
     public static final int TILE_SIZE = GLGlobals.SCREEN_HEIGHT / MAP_SIZE;
     public static final int TILE_TYPE_WATER = 0;

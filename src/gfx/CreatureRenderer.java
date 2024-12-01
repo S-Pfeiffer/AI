@@ -30,7 +30,7 @@ public class CreatureRenderer {
         double offsetX = ((double) GLGlobals.SCREEN_WIDTH / 2) - ((double) (Globals.TILE_SIZE * Globals.MAP_SIZE) / 2);
         worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1);
 
-        renderer.fillCircle(this.positionX + offsetX, this.positionY, 10, 10, 1, 1, 1);
+        renderer.fillCircle(this.positionX + offsetX, this.positionY, 5, 10, 1, 1, 1);
 
     }
 }

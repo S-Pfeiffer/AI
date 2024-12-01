@@ -1,12 +1,12 @@
 import gfx.CreatureRenderer;
 import gfx.GLHandler;
 import gfx.GLRenderer;
-import model.Globals;
 import model.Creature;
+import model.Globals;
 import model.Map;
 
 import static gfx.GLGlobals.*;
-import static model.Globals.MINIMUM_CREATURES;
+import static model.Globals.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static tools.Tool.rndDouble;
@@ -70,8 +70,8 @@ public void uiRenderer(long window, GLRenderer renderer) {
 
     if (creatures.size() < MINIMUM_CREATURES) {
         creatures.addLast(new Creature());
-        creatures.getLast().setxPos(rndDouble(0, Globals.MAX_SIZE));
-        creatures.getLast().setyPos(rndDouble(0, Globals.MAX_SIZE));
+        creatures.getLast().setxPos(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE ));
+        creatures.getLast().setyPos(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE ));
         creatures.getLast().setEnergy(100);
     }
 
