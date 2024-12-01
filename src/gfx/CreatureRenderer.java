@@ -4,6 +4,8 @@ import model.Creature;
 import model.Globals;
 import model.Map;
 
+import static model.Globals.OFFSET;
+
 public class CreatureRenderer {
 
     int gridX;
@@ -21,16 +23,13 @@ public class CreatureRenderer {
         int tileType = worldMap.getTileType(this.gridX, this.gridY);
 
         if (tileType == Globals.TILE_TYPE_GROUND) {
-            if (worldMap.getTileFood(this.gridX, this.gridY) > 1){
+            if (worldMap.getTileFood(this.gridX, this.gridY) > 2){
                 creature.setEnergy(creature.getEnergy() + 1.0d);
                 worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1.0d);
             }
         }
 
-        double offsetX = ((double) GLGlobals.SCREEN_WIDTH / 2) - ((double) (Globals.TILE_SIZE * Globals.MAP_SIZE) / 2);
-        worldMap.setTileFood(this.gridX, this.gridY, worldMap.getTileFood(this.gridX, this.gridY) - 1);
-
-        renderer.fillCircle(this.positionX + offsetX, this.positionY, 5, 10, 1, 1, 1);
+        renderer.fillCircle(this.positionX + OFFSET, this.positionY, 5, 10, 1, 1, 1);
 
     }
 }
