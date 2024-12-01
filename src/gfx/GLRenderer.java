@@ -1,6 +1,7 @@
 package gfx;
 
 import java.nio.ByteBuffer;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public class GLRenderer {
@@ -124,4 +125,21 @@ public class GLRenderer {
 
         return new double[]{red, green, blue};
     }
+
+    public void drawLineWithAngle(double x1, double y1, double angle, double length, double red, double green, double blue) {
+        // Berechnung der Endpunkte
+        double x2 = x1 + Math.cos(Math.toRadians(angle + 90)) * length;
+        double y2 = y1 + Math.sin(Math.toRadians(angle + 90)) * length;
+
+        // Zeichne die Linie mit den berechneten Koordinaten
+        drawLine(x1, y1, x2, y2, red, green, blue);
+    }
+
+    public double[] getPointByAngle(double x, double y, double angle, double distance) {
+        double xResult = x + Math.cos(Math.toRadians(angle + 90)) * distance;
+        double yResult = y + Math.sin(Math.toRadians(angle + 90)) * distance;
+        return new double[]{xResult, yResult};
+    }
+
+
 }

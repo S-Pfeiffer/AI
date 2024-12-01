@@ -30,6 +30,5 @@ public class CreatureRenderer {
         }
 
         renderer.fillCircle(this.positionX + OFFSET, this.positionY, 5, 10, 1, 1, 1);
-
     }
 }
