@@ -8,7 +8,7 @@ input values and produce transformed outputs based on activation functions.
 
 Key Objectives:
 
-Neuron Representation:
+model.Neuron Representation:
  Each neuron has a value (which can be updated and modified) and a name for identification.
  The neuron's value is initialized randomly within a specific range and transformed using a
  hyperbolic tangent function to simulate an activation process.
@@ -34,7 +34,7 @@ Experimentation and Learning:
 
  -Weight adjustment
  -Activation functions
- -Network layers
+ -model.Network layers
  -Input-output relationships
 
 This combination of artificial intelligence, procedural generation, and simulated evolution

@@ -1,3 +1,5 @@
+package gfx;
+
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;

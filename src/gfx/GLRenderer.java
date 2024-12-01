@@ -1,3 +1,5 @@
+package gfx;
+
 import java.nio.ByteBuffer;
 import static org.lwjgl.opengl.GL11.*;
 

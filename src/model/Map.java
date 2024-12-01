@@ -1,3 +1,9 @@
+package model;
+
+import gfx.GLGlobals;
+import gfx.GLRenderer;
+import tools.Tool;
+
 public class Map {
 
     private Tile[][] map = new Tile[Globals.MAP_SIZE][Globals.MAP_SIZE];

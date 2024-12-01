@@ -1,3 +1,7 @@
+package model;
+
+import tools.Tool;
+
 public class Connection {
 
     private Neuron fromNeuron;

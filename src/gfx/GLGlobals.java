@@ -1,3 +1,5 @@
+package gfx;
+
 import org.lwjgl.glfw.GLFWVidMode;
 
 import static org.lwjgl.glfw.GLFW.*;

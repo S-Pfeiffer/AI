@@ -1,3 +1,9 @@
+package gfx;
+
+import model.Creature;
+import model.Globals;
+import model.Map;
+
 public class CreatureRenderer {
 
     int gridX;

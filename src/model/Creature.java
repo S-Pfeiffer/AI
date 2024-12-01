@@ -1,3 +1,5 @@
+package model;
+
 import java.util.List;
 
 public class Creature {
@@ -43,6 +45,13 @@ public class Creature {
     }
 
     public void setxPos(float xPos) {
+        if (xPos < (float) Globals.TILE_SIZE / 2) {
+            xPos = (float) Globals.TILE_SIZE / 2;
+        }
+        if (xPos > (float) Globals.MAX_SIZE - (float) Globals.TILE_SIZE / 2) {
+            xPos = (float) Globals.MAX_SIZE - (float) Globals.TILE_SIZE / 2;
+        }
+
         this.xPos = xPos;
     }
 
@@ -51,6 +60,9 @@ public class Creature {
     }
 
     public void setyPos(float yPos) {
+        if (yPos < (float) Globals.TILE_SIZE / 2) {
+            yPos = (float) Globals.TILE_SIZE / 2;
+        }
         this.yPos = yPos;
     }
 

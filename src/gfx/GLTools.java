@@ -1,3 +1,7 @@
+package gfx;
+
+import tools.Tool;
+
 public class GLTools {
     public static double glMapX(double x) {
         return Tool.mapTo((float) x, 0.0f, 100f, -1.0f, 1.0f);
