@@ -59,4 +59,8 @@ public class Tool {
         return (float) (from + (to - from) * Math.random());
     }
 
+    public static int rndInt(int from, int to) {
+        return (int) (from + (to - from) * Math.random());
+    }
+
 }

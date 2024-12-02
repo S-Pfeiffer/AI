@@ -1,5 +1,7 @@
 package model;
 
+import tools.Tool;
+
 import java.util.List;
 
 public class Creature {
@@ -25,8 +27,20 @@ public class Creature {
     private double feelerAngle;
     private double eat;
 
-    public Creature() {
+    private double rVal;
+    private double gVal;
+    private double bVal;
 
+    public Creature() {
+    }
+
+    public Creature(double x, double y) {
+        this.xPos = (float) x;
+        this.yPos = (float) y;
+        this.energy = 100.0;
+        this.rVal = Tool.rndDouble(0,1);
+        this.gVal = Tool.rndDouble(0,1);
+        this.bVal = Tool.rndDouble(0,1);
     }
 
     public void updateInputs() {
@@ -175,5 +189,29 @@ public class Creature {
 
     public void setEat(double eat) {
         this.eat = eat;
+    }
+
+    public double getrVal() {
+        return rVal;
+    }
+
+    public void setrVal(double rVal) {
+        this.rVal = rVal;
+    }
+
+    public double getgVal() {
+        return gVal;
+    }
+
+    public void setgVal(double gVal) {
+        this.gVal = gVal;
+    }
+
+    public double getbVal() {
+        return bVal;
+    }
+
+    public void setbVal(double bVal) {
+        this.bVal = bVal;
     }
 }

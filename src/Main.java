@@ -32,12 +32,7 @@ public void main(String[] args) {
     long lastTime = System.currentTimeMillis();
 
     for (int i = 0; i < MINIMUM_CREATURES; i++) {
-        creatures.add(new Creature());
-    }
-    for (Creature creature : creatures) {
-        creature.setxPos(500);
-        creature.setyPos(500);
-        creature.setEnergy(100);
+        creatures.add(new Creature(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE),rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE )));
     }
 
     uiRenderer(window, renderer);
@@ -69,10 +64,7 @@ public void uiRenderer(long window, GLRenderer renderer) {
     creatures.removeIf(creature -> creature.getEnergy() < Globals.CREATURE_MINIMUM_ENERGY);
 
     if (creatures.size() < MINIMUM_CREATURES) {
-        creatures.addLast(new Creature());
-        creatures.getLast().setxPos(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE ));
-        creatures.getLast().setyPos(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE ));
-        creatures.getLast().setEnergy(100);
+        creatures.addLast(new Creature(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE),rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE )));
     }
 
     glfwSwapBuffers(window);
