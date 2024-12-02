@@ -32,7 +32,7 @@ public class CreatureRenderer {
 
         renderer.drawLineWithAngle(this.positionX + OFFSET,
                 this.positionY,
-                0, 30, 1, 1, 1);
+                0, CREATURE_SIZE * 3, 1, 1, 1);
 
         renderer.fillCircle(this.positionX + OFFSET,
                 this.positionY,

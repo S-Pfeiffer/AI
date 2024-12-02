@@ -63,7 +63,7 @@ public void uiRenderer(long window, GLRenderer renderer) {
 
     creatures.removeIf(creature -> creature.getEnergy() < Globals.CREATURE_MINIMUM_ENERGY);
 
-    if (creatures.size() < MINIMUM_CREATURES) {
+    while (creatures.size() < MINIMUM_CREATURES) {
         creatures.addLast(new Creature(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE),rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE )));
     }
 
