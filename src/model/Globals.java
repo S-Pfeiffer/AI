@@ -4,13 +4,14 @@ import gfx.GLGlobals;
 
 public class Globals {
 
-    public static final int MINIMUM_CREATURES = 10;
+    public static final int MINIMUM_CREATURES = 20;
 
     public static final int INPUT_NEURONS = 7;
     public static final int HIDDEN_NEURONS = 21;
     public static final int OUTPUT_NEURONS = 5;
     public static final int CREATURE_MINIMUM_ENERGY = 25;
     public static final double CREATURE_SIZE = 10;
+    public static final double FEELER_SIZE = 3;
 
     public static final int MAP_SIZE = 20;
     public static final int MAP_LAND_RATIO = 60;

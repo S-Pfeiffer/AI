@@ -130,11 +130,4 @@ public class GLRenderer {
         double y2 = y1 + Math.sin(adjustedAngle) * length;
         drawLine(x1, y1, x2, y2, 1, green, blue);
     }
-
-
-    public double[] getPointByAngle(double x, double y, double angle, double distance) {
-        double xResult = x + Math.cos(Math.toRadians(angle + 90)) * distance;
-        double yResult = y + Math.sin(Math.toRadians(angle + 90)) * distance;
-        return new double[]{xResult, yResult};
-    }
 }
