@@ -41,8 +41,23 @@ public class CreatureRenderer {
         feelerGridY = (int) (point[1] / Globals.TILE_SIZE);
         creature.setTileTypeFeeler(worldMap.getTileType(feelerGridX, feelerGridY));
         creature.setFoodValueFeeler(worldMap.getTileFood(feelerGridX, feelerGridY));
+        creature.setAngle(Tool.mapTo(creature.getNetwork().getOutputs().get(0).getValue(), -1, 1, 0, 360));
+        creature.setSpeed(creature.getNetwork().getOutputs().get(1).getValue());
 
         creature.updateInputs();
+        creature.move();
+        if (creature.getxPos() < TILE_SIZE) {
+            creature.setxPos(TILE_SIZE);
+        }
+        if (creature.getxPos() > (MAP_SIZE * TILE_SIZE) - TILE_SIZE) {
+            creature.setxPos((MAP_SIZE * TILE_SIZE) - TILE_SIZE);
+        }
+        if (creature.getyPos() < TILE_SIZE) {
+            creature.setyPos(TILE_SIZE);
+        }
+        if (creature.getyPos() > (MAP_SIZE * TILE_SIZE) - TILE_SIZE) {
+            creature.setyPos((MAP_SIZE * TILE_SIZE) - TILE_SIZE);
+        }
 
         double an = Tool.mapTo(creature.getNetwork().getOutputs().get(3).getValue(), -1, 1, 0, 360);
         creature.setFeelerAngle(an);

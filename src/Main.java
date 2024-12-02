@@ -55,8 +55,6 @@ public void uiRenderer(long window, GLRenderer renderer) {
     worldMap.draw(renderer);
 
     for (Creature creature : creatures) {
-        creature.setxPos((float) (creature.getxPos() + rndDouble(-4, 4)));
-        creature.setyPos((float) (creature.getyPos() + rndDouble(-4, 4)));
         creature.setEnergy(creature.getEnergy() - 0.50f);
         creatureRenderer.draw(renderer, worldMap, creature);
     }

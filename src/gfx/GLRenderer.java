@@ -116,7 +116,6 @@ public class GLRenderer {
         ByteBuffer buffer = ByteBuffer.allocateDirect(3); // 3 Bytes für RGB
         glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, buffer);
 
-        // Farbwerte extrahieren und normalisieren (0-255 zu 0.0-1.0)
         double red = (buffer.get(0) & 0xFF) / 255.0;
         double green = (buffer.get(1) & 0xFF) / 255.0;
         double blue = (buffer.get(2) & 0xFF) / 255.0;

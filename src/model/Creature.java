@@ -19,7 +19,7 @@ public class Creature {
     private double foodValuePosition = 0.0;
     private double foodValueFeeler = 0.0;
     private double energy;
-    private double angle;
+    private double angle = Tool.rndDouble(0,360);
     private double speed;
     private int tileTypeFeeler;
     private int tileTypePosition;
@@ -42,24 +42,20 @@ public class Creature {
         this.xPos = (float) x;
         this.yPos = (float) y;
         this.energy = 100.0;
-        this.rVal = Tool.rndDouble(0,1);
-        this.gVal = Tool.rndDouble(0,1);
-        this.bVal = Tool.rndDouble(0,1);
+        this.rVal = Tool.rndDouble(0, 1);
+        this.gVal = Tool.rndDouble(0, 1);
+        this.bVal = Tool.rndDouble(0, 1);
         this.age = 0;
+    }
+
+    public void move() {
+        double adjustedAngle = Math.toRadians(this.angle + 90);
+        this.xPos += (float) (Math.cos(adjustedAngle) * speed);
+        this.yPos += (float) (Math.sin(adjustedAngle) * speed);
     }
 
     public void updateInputs() {
         List<Neuron> inputNeurons = this.network.getInputs();
-
-        /*
-         inputNeurons.get(0).setValue(this.bias);
-        inputNeurons.get(1).setValue(Tool.mapTo(this.foodValuePosition,0,MAX_FOOD_ON_TILE,-10,10));
-        inputNeurons.get(2).setValue(Tool.mapTo(this.foodValueFeeler,0,MAX_FOOD_ON_TILE,-10,10));
-        inputNeurons.get(3).setValue(Tool.mapTo(this.energy,25,200,-10,10));
-        inputNeurons.get(4).setValue(Tool.mapTo(this.tileTypeFeeler,0,1,-10,10));
-        inputNeurons.get(5).setValue(Tool.mapTo(this.tileTypePosition, 0, 1, -10, 10));
-        inputNeurons.get(6).setValue(Tool.mapTo(this.age,0,10,-10,10));
-         */
         inputNeurons.get(0).setValue(this.bias);
         inputNeurons.get(1).setValue(this.foodValuePosition);
         inputNeurons.get(2).setValue(this.foodValueFeeler);
@@ -229,5 +225,21 @@ public class Creature {
 
     public void setbVal(double bVal) {
         this.bVal = bVal;
+    }
+
+    public double getAngle() {
+        return this.angle;
+    }
+
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }
+
+    public double getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 }

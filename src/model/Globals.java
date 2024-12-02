@@ -4,7 +4,7 @@ import gfx.GLGlobals;
 
 public class Globals {
 
-    public static final int MINIMUM_CREATURES = 20;
+    public static final int MINIMUM_CREATURES = 100;
 
     public static final int INPUT_NEURONS = 7;
     public static final int HIDDEN_NEURONS = 21;
