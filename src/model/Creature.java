@@ -14,7 +14,7 @@ public class Creature {
     private Network network = new Network(Globals.INPUT_NEURONS, Globals.HIDDEN_NEURONS, Globals.OUTPUT_NEURONS);
 
     // Inputs
-    private int age;
+    private double age;
     private double bias = 1.0;
     private double foodValuePosition = 0.0;
     private double foodValueFeeler = 0.0;
@@ -43,6 +43,7 @@ public class Creature {
         this.rVal = Tool.rndDouble(0,1);
         this.gVal = Tool.rndDouble(0,1);
         this.bVal = Tool.rndDouble(0,1);
+        this.age = 0;
     }
 
     public void updateInputs() {
@@ -52,11 +53,10 @@ public class Creature {
         inputNeurons.get(2).setValue(this.foodValueFeeler);
         inputNeurons.get(3).setValue(Tool.mapTo(this.energy,25,200,-10,10));
         inputNeurons.get(4).setValue(this.tileTypeFeeler);
-        inputNeurons.get(5).setValue(this.tileTypePosition);
-        inputNeurons.get(6).setValue(this.age);
+        inputNeurons.get(5).setValue(Tool.mapTo(this.tileTypePosition, 0, 1, -10, 10));
+        inputNeurons.get(6).setValue(Tool.mapTo(this.age,0,10,-10,10));
         this.network.feedForward();
     }
-
 
     public double getxPos() {
         return this.xPos;
@@ -95,11 +95,11 @@ public class Creature {
         this.network = network;
     }
 
-    public int getAge() {
+    public double getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(double age) {
         this.age = age;
     }
 
