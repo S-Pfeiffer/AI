@@ -23,7 +23,6 @@ public void main(String[] args) {
     glOrtho(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT, -1, 1);
 
     GLRenderer renderer = new GLRenderer();
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     long window = handler.getWindow();
     glfwSetWindowCloseCallback(window, (win) -> {
@@ -52,6 +51,7 @@ public void main(String[] args) {
 
 public void uiRenderer(long window, GLRenderer renderer) {
 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     worldMap.draw(renderer);
 
     for (Creature creature : creatures) {

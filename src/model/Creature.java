@@ -4,6 +4,8 @@ import tools.Tool;
 
 import java.util.List;
 
+import static model.Globals.MAX_FOOD_ON_TILE;
+
 public class Creature {
 
     private float xPos;
@@ -46,13 +48,15 @@ public class Creature {
     public void updateInputs() {
         List<Neuron> inputNeurons = this.network.getInputs();
         inputNeurons.get(0).setValue(this.bias);
-        inputNeurons.get(1).setValue(this.foodValuePosition);
+        inputNeurons.get(1).setValue(Tool.mapTo(this.foodValuePosition,0,MAX_FOOD_ON_TILE,-10,10));
         inputNeurons.get(2).setValue(this.foodValueFeeler);
-        inputNeurons.get(3).setValue(this.energy);
+        inputNeurons.get(3).setValue(Tool.mapTo(this.energy,25,200,-10,10));
         inputNeurons.get(4).setValue(this.tileTypeFeeler);
         inputNeurons.get(5).setValue(this.tileTypePosition);
         inputNeurons.get(6).setValue(this.age);
+        this.network.feedForward();
     }
+
 
     public double getxPos() {
         return this.xPos;
@@ -128,8 +132,8 @@ public class Creature {
     }
 
     public void setEnergy(double energy) {
-        if (this.energy > Globals.MAX_FOOD_ON_TILE * 2) {
-            this.energy = Globals.MAX_FOOD_ON_TILE * 2;
+        if (this.energy > MAX_FOOD_ON_TILE * 2) {
+            this.energy = MAX_FOOD_ON_TILE * 2;
         } else {
             this.energy = energy;
         }

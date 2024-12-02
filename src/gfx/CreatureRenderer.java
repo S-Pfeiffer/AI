@@ -3,6 +3,7 @@ package gfx;
 import model.Creature;
 import model.Globals;
 import model.Map;
+import tools.Tool;
 
 import static model.Globals.CREATURE_SIZE;
 import static model.Globals.OFFSET;
@@ -30,9 +31,14 @@ public class CreatureRenderer {
             }
         }
 
+        creature.setFoodValuePosition(worldMap.getTileFood(this.gridX, this.gridY));
+        creature.updateInputs();
+
+        double an = Tool.mapTo(creature.getNetwork().getOutputs().get(3).getValue(),-1,1,0,360);
+
         renderer.drawLineWithAngle(this.positionX + OFFSET,
                 this.positionY,
-                0, CREATURE_SIZE * 3, 1, 1, 1);
+                an, CREATURE_SIZE * 3, 1, 1, 1);
 
         renderer.fillCircle(this.positionX + OFFSET,
                 this.positionY,
@@ -41,5 +47,6 @@ public class CreatureRenderer {
         renderer.drawCircle(this.positionX + OFFSET,
                 this.positionY,
                 CREATURE_SIZE, 10, 0, 0, 0);
+
     }
 }
