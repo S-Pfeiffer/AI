@@ -4,6 +4,7 @@ import gfx.GLRenderer;
 import model.Creature;
 import model.Globals;
 import model.Map;
+import tools.Tool;
 
 import static gfx.GLGlobals.*;
 import static model.Globals.*;
@@ -15,7 +16,7 @@ model.Map worldMap = new Map();
 CreatureRenderer creatureRenderer = new CreatureRenderer();
 List<Creature> creatures = new ArrayList<>();
 
-public void main(String[] args) {
+public void main(String[] args){
 
     GLHandler handler = new GLHandler();
     handler.init();
@@ -49,13 +50,13 @@ public void main(String[] args) {
     handler.terminate();
 }
 
-public void uiRenderer(long window, GLRenderer renderer) {
+public void uiRenderer(long window, GLRenderer renderer){
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     worldMap.draw(renderer);
 
     for (Creature creature : creatures) {
-        creature.setEnergy(creature.getEnergy() - 0.50f);
+        creature.setEnergy(creature.getEnergy() - 0.5d);
         creatureRenderer.draw(renderer, worldMap, creature);
     }
 

@@ -16,6 +16,10 @@ public class CreatureRenderer {
     double positionX;
     double positionY;
 
+    public Creature giveBirth (Creature parent) {
+        return parent;
+    }
+
     public void draw(GLRenderer renderer, Map worldMap, Creature creature) {
 
         this.positionX = creature.getxPos();
@@ -33,7 +37,7 @@ public class CreatureRenderer {
         }
 
         creature.setFoodValuePosition(worldMap.getTileFood(this.gridX, this.gridY));
-        creature.setAge(creature.getAge() + 1);
+        creature.setAge(creature.getAge() + .01);
         creature.setTileTypePosition(worldMap.getTileType(this.gridX, this.gridY));
 
         double[] point = GLTools.getPointByAngle(creature.getxPos(), creature.getyPos(), creature.getFeelerAngle(), CREATURE_SIZE * FEELER_SIZE);
@@ -46,6 +50,7 @@ public class CreatureRenderer {
 
         creature.updateInputs();
         creature.move();
+
         if (creature.getxPos() < TILE_SIZE) {
             creature.setxPos(TILE_SIZE);
         }
@@ -61,9 +66,11 @@ public class CreatureRenderer {
 
         double an = Tool.mapTo(creature.getNetwork().getOutputs().get(3).getValue(), -1, 1, 0, 360);
         creature.setFeelerAngle(an);
+
         renderer.drawLineWithAngle(this.positionX + OFFSET,
                 this.positionY,
                 an, CREATURE_SIZE * FEELER_SIZE, 1, 1, 1);
+        renderer.fillCircle(point[0] + OFFSET, point[1], 3, 5, 1, 1, 1);
 
         renderer.fillCircle(this.positionX + OFFSET,
                 this.positionY,
@@ -72,7 +79,5 @@ public class CreatureRenderer {
         renderer.drawCircle(this.positionX + OFFSET,
                 this.positionY,
                 CREATURE_SIZE, 10, 0, 0, 0);
-
-        renderer.fillCircle(point[0] + OFFSET, point[1], 3, 5, 1, 1, 1);
     }
 }

@@ -12,10 +12,9 @@ public class Network {
     private List<Connection> firstLayerConnections = new ArrayList<>();
     private List<Connection> secondLayerConnections = new ArrayList<>();
 
+
     public Network(int inputNeurons, int hiddenNeurons, int outputNeurons) {
-
         init(inputNeurons, hiddenNeurons, outputNeurons);
-
     }
 
     public void feedForward() {

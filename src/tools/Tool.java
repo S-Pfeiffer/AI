@@ -1,5 +1,9 @@
 package tools;
 
+import model.Creature;
+
+import java.io.*;
+
 /**
  * Some useful tools to get the work done.
  */
@@ -62,5 +66,16 @@ public class Tool {
     public static int rndInt(int from, int to) {
         return (int) (from + (to - from) * Math.random());
     }
+
+    public static Creature clone(Creature original) throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(byteOut);
+        out.writeObject(original);
+        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(byteIn);
+        return (Creature) in.readObject();
+    }
+
+
 
 }
