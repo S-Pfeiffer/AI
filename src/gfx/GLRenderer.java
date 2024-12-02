@@ -1,8 +1,6 @@
 package gfx;
-
-import java.nio.ByteBuffer;
-
 import static org.lwjgl.opengl.GL11.*;
+import java.nio.ByteBuffer;
 
 public class GLRenderer {
 
@@ -139,6 +137,4 @@ public class GLRenderer {
         double yResult = y + Math.sin(Math.toRadians(angle + 90)) * distance;
         return new double[]{xResult, yResult};
     }
-
-
 }

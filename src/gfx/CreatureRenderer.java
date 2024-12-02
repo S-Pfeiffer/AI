@@ -34,6 +34,7 @@ public class CreatureRenderer {
         creature.setFoodValuePosition(worldMap.getTileFood(this.gridX, this.gridY));
         creature.setAge(creature.getAge() + 1);
         creature.setTileTypePosition(worldMap.getTileType(this.gridX, this.gridY));
+
         creature.updateInputs();
 
         double an = Tool.mapTo(creature.getNetwork().getOutputs().get(3).getValue(),-1,1,0,360);
