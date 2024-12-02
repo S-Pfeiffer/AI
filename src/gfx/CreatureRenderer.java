@@ -11,10 +11,10 @@ public class CreatureRenderer {
 
     int gridX;
     int gridY;
-    double positionX;
-    double positionY;
     int feelerGridX;
     int feelerGridY;
+    double positionX;
+    double positionY;
 
     public void draw(GLRenderer renderer, Map worldMap, Creature creature) {
 
@@ -40,6 +40,7 @@ public class CreatureRenderer {
         feelerGridX = (int) (point[0] / Globals.TILE_SIZE);
         feelerGridY = (int) (point[1] / Globals.TILE_SIZE);
         creature.setTileTypeFeeler(worldMap.getTileType(feelerGridX, feelerGridY));
+        creature.setFoodValueFeeler(worldMap.getTileFood(feelerGridX, feelerGridY));
 
         creature.updateInputs();
 

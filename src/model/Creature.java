@@ -19,6 +19,8 @@ public class Creature {
     private double foodValuePosition = 0.0;
     private double foodValueFeeler = 0.0;
     private double energy;
+    private double angle;
+    private double speed;
     private int tileTypeFeeler;
     private int tileTypePosition;
 
@@ -48,13 +50,23 @@ public class Creature {
 
     public void updateInputs() {
         List<Neuron> inputNeurons = this.network.getInputs();
-        inputNeurons.get(0).setValue(this.bias);
+
+        /*
+         inputNeurons.get(0).setValue(this.bias);
         inputNeurons.get(1).setValue(Tool.mapTo(this.foodValuePosition,0,MAX_FOOD_ON_TILE,-10,10));
-        inputNeurons.get(2).setValue(this.foodValueFeeler);
+        inputNeurons.get(2).setValue(Tool.mapTo(this.foodValueFeeler,0,MAX_FOOD_ON_TILE,-10,10));
         inputNeurons.get(3).setValue(Tool.mapTo(this.energy,25,200,-10,10));
         inputNeurons.get(4).setValue(Tool.mapTo(this.tileTypeFeeler,0,1,-10,10));
         inputNeurons.get(5).setValue(Tool.mapTo(this.tileTypePosition, 0, 1, -10, 10));
         inputNeurons.get(6).setValue(Tool.mapTo(this.age,0,10,-10,10));
+         */
+        inputNeurons.get(0).setValue(this.bias);
+        inputNeurons.get(1).setValue(this.foodValuePosition);
+        inputNeurons.get(2).setValue(this.foodValueFeeler);
+        inputNeurons.get(3).setValue(this.energy);
+        inputNeurons.get(4).setValue(this.tileTypeFeeler);
+        inputNeurons.get(5).setValue(this.tileTypePosition);
+        inputNeurons.get(6).setValue(this.age);
         this.network.feedForward();
     }
 
@@ -63,11 +75,11 @@ public class Creature {
     }
 
     public void setxPos(float xPos) {
-        if (xPos < (float) Globals.TILE_SIZE / 2) {
-            xPos = (float) Globals.TILE_SIZE / 2;
+        if (xPos < (float) Globals.TILE_SIZE) {
+            xPos = (float) Globals.TILE_SIZE;
         }
-        if (xPos > Globals.MAX_SIZE - (float) Globals.TILE_SIZE / 2) {
-            xPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE / 2;
+        if (xPos > Globals.MAX_SIZE - (float) Globals.TILE_SIZE) {
+            xPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE;
         }
 
         this.xPos = xPos;
@@ -78,11 +90,11 @@ public class Creature {
     }
 
     public void setyPos(float yPos) {
-        if (yPos < (float) Globals.TILE_SIZE / 2) {
-            yPos = (float) Globals.TILE_SIZE / 2;
+        if (yPos < (float) Globals.TILE_SIZE) {
+            yPos = (float) Globals.TILE_SIZE;
         }
-        if (yPos > Globals.MAX_SIZE - (float) Globals.TILE_SIZE / 2) {
-            yPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE / 2;
+        if (yPos > Globals.MAX_SIZE - (float) Globals.TILE_SIZE) {
+            yPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE;
         }
         this.yPos = yPos;
     }

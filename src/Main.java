@@ -66,7 +66,6 @@ public void uiRenderer(long window, GLRenderer renderer) {
     while (creatures.size() < MINIMUM_CREATURES) {
         creatures.addLast(new Creature(rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE),rndDouble(TILE_SIZE , MAX_SIZE - TILE_SIZE )));
     }
-
     glfwSwapBuffers(window);
 }
 
