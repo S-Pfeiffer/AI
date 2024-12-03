@@ -38,63 +38,6 @@ public class Creature implements Cloneable {
     public Creature() {
     }
 
-    public Creature(Creature parent) {
-        parent.setEnergy(70);
-
-        this.age = 0;
-        this.energy = 100;
-        this.birth = 0;
-        this.rotate = Tool.rndDouble(0, 360);
-        this.move = Tool.rndDouble(-5, 5);
-        this.feelerAngle = Tool.rndInt(0, 360);
-        this.angle = Tool.rndInt(0, 360);
-        this.speed = Tool.rndDouble(-1, 1);
-
-        this.xPos = parent.xPos;
-        this.yPos = parent.yPos;
-        this.bias = parent.bias;
-        this.foodValuePosition = parent.foodValuePosition;
-        this.foodValueFeeler = parent.foodValueFeeler;
-
-        this.tileTypeFeeler = parent.tileTypeFeeler;
-        this.tileTypePosition = parent.tileTypePosition;
-        this.eat = parent.eat;
-        this.rVal = parent.rVal + Tool.rndDouble(-0.05, 0.05);
-        this.gVal = parent.gVal + Tool.rndDouble(-0.05, 0.05);
-        this.bVal = parent.bVal + Tool.rndDouble(-0.05, 0.05);
-
-        this.network = parent.network;
-
-        double wc = 2;
-
-        int rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
-        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
-        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
-        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
-        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
-        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
-
-        int rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
-        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
-        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
-        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
-        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
-        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
-        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
-
-    }
-
     public Creature(double x, double y) {
         this.xPos = (float) x;
         this.yPos = (float) y;
@@ -119,7 +62,7 @@ public class Creature implements Cloneable {
         inputNeurons.get(3).setValue(this.energy);
         inputNeurons.get(4).setValue(this.tileTypeFeeler);
         inputNeurons.get(5).setValue(this.tileTypePosition);
-        inputNeurons.get(6).setValue(this.age);
+        inputNeurons.get(6).setValue(1); //Age
         this.network.feedForward();
     }
 
@@ -129,10 +72,10 @@ public class Creature implements Cloneable {
 
     public void setxPos(float xPos) {
         if (xPos < (float) Globals.TILE_SIZE) {
-            xPos = (float) Globals.TILE_SIZE;
+            this.xPos = (float) Globals.TILE_SIZE;
         }
         if (xPos > Globals.MAX_SIZE - (float) Globals.TILE_SIZE) {
-            xPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE;
+            this.xPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE;
         }
 
         this.xPos = xPos;
@@ -144,7 +87,7 @@ public class Creature implements Cloneable {
 
     public void setyPos(float yPos) {
         if (yPos < (float) Globals.TILE_SIZE) {
-            yPos = (float) Globals.TILE_SIZE;
+            this.yPos = (float) Globals.TILE_SIZE;
         }
         if (yPos > Globals.MAX_SIZE - (float) Globals.TILE_SIZE) {
             yPos = Globals.MAX_SIZE - (float) Globals.TILE_SIZE;
@@ -161,7 +104,7 @@ public class Creature implements Cloneable {
     }
 
     public double getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(double age) {
@@ -169,7 +112,7 @@ public class Creature implements Cloneable {
     }
 
     public double getBias() {
-        return bias;
+        return this.bias;
     }
 
     public void setBias(double bias) {
@@ -177,7 +120,7 @@ public class Creature implements Cloneable {
     }
 
     public double getFoodValuePosition() {
-        return foodValuePosition;
+        return this.foodValuePosition;
     }
 
     public void setFoodValuePosition(double foodValuePosition) {
@@ -185,7 +128,7 @@ public class Creature implements Cloneable {
     }
 
     public double getFoodValueFeeler() {
-        return foodValueFeeler;
+        return this.foodValueFeeler;
     }
 
     public void setFoodValueFeeler(double foodValueFeeler) {
@@ -193,7 +136,7 @@ public class Creature implements Cloneable {
     }
 
     public double getEnergy() {
-        return energy;
+        return this.energy;
     }
 
     public void setEnergy(double energy) {
@@ -205,7 +148,7 @@ public class Creature implements Cloneable {
     }
 
     public int getTileTypeFeeler() {
-        return tileTypeFeeler;
+        return this.tileTypeFeeler;
     }
 
     public void setTileTypeFeeler(int tileTypeFeeler) {
@@ -213,7 +156,7 @@ public class Creature implements Cloneable {
     }
 
     public int getTileTypePosition() {
-        return tileTypePosition;
+        return this.tileTypePosition;
     }
 
     public void setTileTypePosition(int tileTypePosition) {
@@ -221,7 +164,7 @@ public class Creature implements Cloneable {
     }
 
     public double getBirth() {
-        return birth;
+        return this.birth;
     }
 
     public void setBirth(double birth) {
@@ -229,7 +172,7 @@ public class Creature implements Cloneable {
     }
 
     public double getRotate() {
-        return rotate;
+        return this.rotate;
     }
 
     public void setRotate(double rotate) {
@@ -237,7 +180,7 @@ public class Creature implements Cloneable {
     }
 
     public double getMove() {
-        return move;
+        return this.move;
     }
 
     public void setMove(double move) {
@@ -245,7 +188,7 @@ public class Creature implements Cloneable {
     }
 
     public double getFeelerAngle() {
-        return feelerAngle;
+        return this.feelerAngle;
     }
 
     public void setFeelerAngle(double feelerAngle) {
@@ -253,7 +196,7 @@ public class Creature implements Cloneable {
     }
 
     public double getEat() {
-        return eat;
+        return this.eat;
     }
 
     public void setEat(double eat) {
@@ -261,7 +204,7 @@ public class Creature implements Cloneable {
     }
 
     public double getrVal() {
-        return rVal;
+        return this.rVal;
     }
 
     public void setrVal(double rVal) {
@@ -269,7 +212,7 @@ public class Creature implements Cloneable {
     }
 
     public double getgVal() {
-        return gVal;
+        return this.gVal;
     }
 
     public void setgVal(double gVal) {
@@ -277,7 +220,7 @@ public class Creature implements Cloneable {
     }
 
     public double getbVal() {
-        return bVal;
+        return this.bVal;
     }
 
     public void setbVal(double bVal) {
@@ -299,6 +242,8 @@ public class Creature implements Cloneable {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
+
+
 
     @Override
     public Creature clone() {

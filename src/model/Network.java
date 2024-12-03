@@ -60,7 +60,7 @@ public class Network implements Cloneable {
     }
 
     public List<Neuron> getInputs() {
-        return inputs;
+        return this.inputs;
     }
 
     public void setInputs(List<Neuron> inputs) {
@@ -68,7 +68,7 @@ public class Network implements Cloneable {
     }
 
     public List<Neuron> getHiddens() {
-        return hiddens;
+        return this.hiddens;
     }
 
     public void setHiddens(List<Neuron> hiddens) {
@@ -76,7 +76,7 @@ public class Network implements Cloneable {
     }
 
     public List<Neuron> getOutputs() {
-        return outputs;
+        return this.outputs;
     }
 
     public void setOutputs(List<Neuron> outputs) {
@@ -99,12 +99,4 @@ public class Network implements Cloneable {
         this.secondLayerConnections = secondLayerConnections;
     }
 
-    @Override
-    public Network clone() {
-        try {
-            return (Network) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
 }

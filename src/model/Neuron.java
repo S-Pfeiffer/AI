@@ -11,7 +11,7 @@ public class Neuron implements Cloneable {
     }
 
     public double getValue() {
-        return Tool.hybTan(value);
+        return Tool.hybTan(this.value);
     }
 
     public void setValue(double value) {
@@ -20,14 +20,5 @@ public class Neuron implements Cloneable {
 
     public void addValue(double value) {
         this.value += value;
-    }
-
-    @Override
-    public Neuron clone() {
-        try {
-            return (Neuron) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 }

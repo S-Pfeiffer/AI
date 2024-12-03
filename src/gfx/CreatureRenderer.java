@@ -21,8 +21,8 @@ public class CreatureRenderer {
         this.positionX = creature.getxPos();
         this.positionY = creature.getyPos();
 
-        gridX = (int) (this.positionX / Globals.TILE_SIZE);
-        gridY = (int) (this.positionY / Globals.TILE_SIZE);
+        this.gridX = (int) (this.positionX / Globals.TILE_SIZE);
+        this.gridY = (int) (this.positionY / Globals.TILE_SIZE);
         int tileType = worldMap.getTileType(this.gridX, this.gridY);
 
         if (tileType == Globals.TILE_TYPE_GROUND) {
@@ -37,10 +37,10 @@ public class CreatureRenderer {
         creature.setTileTypePosition(worldMap.getTileType(this.gridX, this.gridY));
 
         double[] point = GLTools.getPointByAngle(creature.getxPos(), creature.getyPos(), creature.getFeelerAngle(), CREATURE_SIZE * FEELER_SIZE);
-        feelerGridX = (int) (point[0] / Globals.TILE_SIZE);
-        feelerGridY = (int) (point[1] / Globals.TILE_SIZE);
-        creature.setTileTypeFeeler(worldMap.getTileType(feelerGridX, feelerGridY));
-        creature.setFoodValueFeeler(worldMap.getTileFood(feelerGridX, feelerGridY));
+        this.feelerGridX = (int) (point[0] / Globals.TILE_SIZE);
+        this.feelerGridY = (int) (point[1] / Globals.TILE_SIZE);
+        creature.setTileTypeFeeler(worldMap.getTileType(this.feelerGridX, this.feelerGridY));
+        creature.setFoodValueFeeler(worldMap.getTileFood(this.feelerGridX, this.feelerGridY));
         creature.setAngle(Tool.mapTo(creature.getNetwork().getOutputs().get(0).getValue(), -1, 1, 0, 360));
         creature.setSpeed(creature.getNetwork().getOutputs().get(1).getValue());
 
