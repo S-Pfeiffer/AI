@@ -53,10 +53,10 @@ public class Map {
                 if (this.getTileType(x, y) == Globals.TILE_TYPE_WATER) {
                     renderer.fillRectangle(x1, y1, x2, y2, 0, 0, 1);
                 } else {
-                    map[x][y].setFoodValue(map[x][y].getFoodValue() + 0.05d);
+                    map[x][y].setFoodValue(map[x][y].getFoodValue() + 0.1d);
                     double g = Tool.mapTo(map[x][y].getFoodValue(), 100, 0, 1, .4);
-                    double rb = Tool.mapTo(map[x][y].getFoodValue(), 100, 0, .2, .4);
-                    renderer.fillRectangle(x1, y1, x2, y2, rb, g, rb);
+                    double rb = Tool.mapTo(map[x][y].getFoodValue(), 100, 0, .3, .4);
+                    renderer.fillRectangle(x1, y1, x2, y2, rb, g, rb );
                 }
             }
         }

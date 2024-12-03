@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Network {
+public class Network implements Cloneable {
 
     private List<Neuron> inputs = new ArrayList<Neuron>();
     private List<Neuron> hiddens = new ArrayList<Neuron>();
@@ -12,15 +12,11 @@ public class Network {
     private List<Connection> firstLayerConnections = new ArrayList<>();
     private List<Connection> secondLayerConnections = new ArrayList<>();
 
-
     public Network(int inputNeurons, int hiddenNeurons, int outputNeurons) {
         init(inputNeurons, hiddenNeurons, outputNeurons);
     }
 
-
-
     public void feedForward() {
-
         for (Neuron n : hiddens) {
             n.setValue(0.0);
         }
@@ -101,5 +97,14 @@ public class Network {
 
     public void setSecondLayerConnections(List<Connection> secondLayerConnections) {
         this.secondLayerConnections = secondLayerConnections;
+    }
+
+    @Override
+    public Network clone() {
+        try {
+            return (Network) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

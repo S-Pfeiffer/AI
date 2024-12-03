@@ -6,7 +6,7 @@ import java.util.List;
 
 import static model.Globals.MAX_FOOD_ON_TILE;
 
-public class Creature {
+public class Creature implements Cloneable {
 
     private float xPos;
     private float yPos;
@@ -36,6 +36,63 @@ public class Creature {
     private double bVal;
 
     public Creature() {
+    }
+
+    public Creature(Creature parent) {
+        parent.setEnergy(70);
+
+        this.age = 0;
+        this.energy = 100;
+        this.birth = 0;
+        this.rotate = Tool.rndDouble(0, 360);
+        this.move = Tool.rndDouble(-5, 5);
+        this.feelerAngle = Tool.rndInt(0, 360);
+        this.angle = Tool.rndInt(0, 360);
+        this.speed = Tool.rndDouble(-1, 1);
+
+        this.xPos = parent.xPos;
+        this.yPos = parent.yPos;
+        this.bias = parent.bias;
+        this.foodValuePosition = parent.foodValuePosition;
+        this.foodValueFeeler = parent.foodValueFeeler;
+
+        this.tileTypeFeeler = parent.tileTypeFeeler;
+        this.tileTypePosition = parent.tileTypePosition;
+        this.eat = parent.eat;
+        this.rVal = parent.rVal + Tool.rndDouble(-0.05, 0.05);
+        this.gVal = parent.gVal + Tool.rndDouble(-0.05, 0.05);
+        this.bVal = parent.bVal + Tool.rndDouble(-0.05, 0.05);
+
+        this.network = parent.network;
+
+        double wc = 2;
+
+        int rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
+        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
+        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
+        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
+        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
+        rndL2 = Tool.rndInt(0, Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL2).setWeight(Tool.rndDouble(-wc, wc));
+
+        int rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
+        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
+        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
+        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
+        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
+        rndL3 = Tool.rndInt(0, Globals.HIDDEN_NEURONS * Globals.OUTPUT_NEURONS);
+        this.network.getFirstLayerConnections().get(rndL3).setWeight(Tool.rndDouble(-wc, wc));
+
     }
 
     public Creature(double x, double y) {
@@ -241,5 +298,14 @@ public class Creature {
 
     public void setSpeed(double speed) {
         this.speed = speed;
+    }
+
+    @Override
+    public Creature clone() {
+        try {
+            return (Creature) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

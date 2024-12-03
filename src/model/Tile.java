@@ -31,7 +31,7 @@ public class Tile {
                 this.foodValue = foodValue;
             }
         } else {
-            this.foodValue = -100.0d;
+            this.foodValue = -1.0d;
         }
     }
 }

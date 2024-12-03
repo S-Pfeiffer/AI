@@ -11,7 +11,7 @@ public class Connection {
     public Connection(Neuron fromNeuron, Neuron toNeuron) {
         this.fromNeuron = fromNeuron;
         this.toNeuron = toNeuron;
-        this.weight = Tool.rndDouble(-1.0, 1.0);
+        this.weight = Tool.rndDouble(-1.0d, 1.0d);
     }
 
     public Neuron getFromNeuron() {
