@@ -3,6 +3,7 @@ package model;
 import tools.Tool;
 
 public class Neuron {
+
     private double value;
 
     public Neuron() {

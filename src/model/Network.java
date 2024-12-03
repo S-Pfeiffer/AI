@@ -17,6 +17,8 @@ public class Network {
         init(inputNeurons, hiddenNeurons, outputNeurons);
     }
 
+
+
     public void feedForward() {
 
         for (Neuron n : hiddens) {

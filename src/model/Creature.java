@@ -19,7 +19,7 @@ public class Creature {
     private double foodValuePosition = 0.0;
     private double foodValueFeeler = 0.0;
     private double energy;
-    private double angle = Tool.rndDouble(0,360);
+    private double angle = Tool.rndDouble(0, 360);
     private double speed;
     private int tileTypeFeeler;
     private int tileTypePosition;

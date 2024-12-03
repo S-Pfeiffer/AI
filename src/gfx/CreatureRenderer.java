@@ -16,10 +16,6 @@ public class CreatureRenderer {
     double positionX;
     double positionY;
 
-    public Creature giveBirth (Creature parent) {
-        return parent;
-    }
-
     public void draw(GLRenderer renderer, Map worldMap, Creature creature) {
 
         this.positionX = creature.getxPos();
