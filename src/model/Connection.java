@@ -2,11 +2,17 @@ package model;
 
 import tools.Tool;
 
-public class Connection {
+public class Connection implements Cloneable {
 
     private Neuron fromNeuron;
     private Neuron toNeuron;
     private double weight;
+
+    public Connection(Connection connection) {
+        this.fromNeuron = connection.getFromNeuron().clone();
+        this.toNeuron = connection.getToNeuron().clone();
+        this.weight = connection.getWeight();
+    }
 
     public Connection(Neuron fromNeuron, Neuron toNeuron) {
         this.fromNeuron = fromNeuron;
@@ -39,5 +45,16 @@ public class Connection {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public Connection clone() {
+        try {
+            Connection clone = (Connection) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

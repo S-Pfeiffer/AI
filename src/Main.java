@@ -58,13 +58,22 @@ public void uiRenderer(long window, GLRenderer renderer) {
     for (Creature creature : creatures) {
         creature.setEnergy(creature.getEnergy() - ENERGY_CONSUMPTION_PER_FRAME);
         creatureRenderer.draw(renderer, worldMap, creature);
+        if (creature.getEnergy() > 150) {
+            toClone.add(new Creature(creature).clone());
+            creature.setEnergy(70);
+        }
     }
+
+    creatures.addAll(toClone);
+    toClone.clear();
 
     creatures.removeIf(creature -> creature.getEnergy() < Globals.CREATURE_MINIMUM_ENERGY);
 
     while (creatures.size() < MINIMUM_CREATURES) {
         creatures.addLast(new Creature(rndDouble(TILE_SIZE, MAX_SIZE - TILE_SIZE), rndDouble(TILE_SIZE, MAX_SIZE - TILE_SIZE)));
     }
+
+    System.out.println(creatures.size());
     glfwSwapBuffers(window);
 }
 

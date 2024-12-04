@@ -38,6 +38,43 @@ public class Creature implements Cloneable {
     public Creature() {
     }
 
+    public Creature(Creature creature) {
+        this.network = creature.network.clone();
+
+        this.xPos = creature.xPos;
+        this.yPos = creature.yPos;
+        this.age = 0;
+        this.bias = 1;
+        this.energy = 100;
+        this.angle = Tool.rndDouble(0, 360);
+        this.feelerAngle = Tool.rndDouble(0, 360);
+
+        this.rVal = creature.rVal;
+        this.gVal = creature.gVal;
+        this.bVal = creature.bVal;
+
+        int inToHiddenConnections = Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS;
+        int outToHiddenConnections = Globals.OUTPUT_NEURONS * Globals.HIDDEN_NEURONS;
+        int connectionsToAlternate = 20;
+        double alternateBounds = 2;
+        int selectConnection;
+        double selectedWeight;
+
+        for (int i = 0; i < connectionsToAlternate; i++) {
+            selectConnection = Tool.rndInt(0, inToHiddenConnections);
+            selectedWeight = this.network.getFirstLayerConnections().get(selectConnection).getWeight();
+            selectedWeight = selectedWeight + Tool.rndDouble(-alternateBounds, alternateBounds);
+            this.network.getFirstLayerConnections().get(selectConnection).setWeight(selectedWeight);
+        }
+
+        for (int i = 0; i < connectionsToAlternate; i++) {
+            selectConnection = Tool.rndInt(0, outToHiddenConnections);
+            selectedWeight = this.network.getSecondLayerConnections().get(selectConnection).getWeight();
+            selectedWeight = selectedWeight + Tool.rndDouble(-alternateBounds, alternateBounds);
+            this.network.getSecondLayerConnections().get(selectConnection).setWeight(selectedWeight);
+        }
+    }
+
     public Creature(double x, double y) {
         this.xPos = (float) x;
         this.yPos = (float) y;
@@ -243,12 +280,12 @@ public class Creature implements Cloneable {
         this.speed = speed;
     }
 
-
-
     @Override
     public Creature clone() {
         try {
-            return (Creature) super.clone();
+            Creature clone = (Creature) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }

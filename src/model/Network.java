@@ -5,16 +5,24 @@ import java.util.List;
 
 public class Network implements Cloneable {
 
+    public Network(int inputNeurons, int hiddenNeurons, int outputNeurons) {
+        init(inputNeurons, hiddenNeurons, outputNeurons);
+    }
+
+    public Network(Network network) {
+        this.inputs = network.inputs;
+        this.hiddens = network.hiddens;
+        this.outputs = network.outputs;
+        this.firstLayerConnections = network.firstLayerConnections;
+        this.secondLayerConnections = network.secondLayerConnections;
+    }
+
     private List<Neuron> inputs = new ArrayList<Neuron>();
     private List<Neuron> hiddens = new ArrayList<Neuron>();
     private List<Neuron> outputs = new ArrayList<Neuron>();
 
     private List<Connection> firstLayerConnections = new ArrayList<>();
     private List<Connection> secondLayerConnections = new ArrayList<>();
-
-    public Network(int inputNeurons, int hiddenNeurons, int outputNeurons) {
-        init(inputNeurons, hiddenNeurons, outputNeurons);
-    }
 
     public void feedForward() {
         for (Neuron n : hiddens) {
@@ -99,4 +107,14 @@ public class Network implements Cloneable {
         this.secondLayerConnections = secondLayerConnections;
     }
 
+    @Override
+    public Network clone() {
+        try {
+            Network clone = (Network) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }
