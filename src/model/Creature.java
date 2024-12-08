@@ -4,8 +4,6 @@ import tools.Tool;
 
 import java.util.List;
 
-import static model.Globals.MAX_FOOD_ON_TILE;
-
 public class Creature implements Cloneable {
 
     private float xPos;
@@ -56,7 +54,7 @@ public class Creature implements Cloneable {
         int inToHiddenConnections = Globals.INPUT_NEURONS * Globals.HIDDEN_NEURONS;
         int outToHiddenConnections = Globals.OUTPUT_NEURONS * Globals.HIDDEN_NEURONS;
         int connectionsToAlternate = 20;
-        double alternateBounds = 2;
+        double alternateBounds = .5;
         int selectConnection;
         double selectedWeight;
 
@@ -177,8 +175,8 @@ public class Creature implements Cloneable {
     }
 
     public void setEnergy(double energy) {
-        if (this.energy > MAX_FOOD_ON_TILE * 2) {
-            this.energy = MAX_FOOD_ON_TILE * 2;
+        if (this.energy > Globals.MAX_FOOD_ON_TILE * 2) {
+            this.energy = Globals.MAX_FOOD_ON_TILE * 2;
         } else {
             this.energy = energy;
         }
@@ -285,6 +283,7 @@ public class Creature implements Cloneable {
         try {
             Creature clone = (Creature) super.clone();
             // TODO: copy mutable state here, so the clone can't change the internals of the original
+
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();

@@ -64,7 +64,7 @@ public void uiRenderer(long window, GLRenderer renderer) {
         }
     }
 
-    creatures.addAll(toClone);
+    //creatures.addAll(toClone);
     toClone.clear();
 
     creatures.removeIf(creature -> creature.getEnergy() < Globals.CREATURE_MINIMUM_ENERGY);
@@ -73,7 +73,6 @@ public void uiRenderer(long window, GLRenderer renderer) {
         creatures.addLast(new Creature(rndDouble(TILE_SIZE, MAX_SIZE - TILE_SIZE), rndDouble(TILE_SIZE, MAX_SIZE - TILE_SIZE)));
     }
 
-    System.out.println(creatures.size());
     glfwSwapBuffers(window);
 }
 

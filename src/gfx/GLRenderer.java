@@ -2,6 +2,7 @@ package gfx;
 import static org.lwjgl.opengl.GL11.*;
 import java.nio.ByteBuffer;
 
+
 public class GLRenderer {
 
     public void setPixel(double x, double y, double red, double green, double blue) {
